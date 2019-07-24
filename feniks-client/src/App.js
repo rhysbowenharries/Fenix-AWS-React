@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
+import React, { Component, Fragment} from 'react';
+import {BrowserRouter as Router,Route} from 'react-router-dom';
 
 
 import 'bootstrap';
@@ -7,14 +7,17 @@ import './css/feniks_style.css';
 import 'popper.js/dist/popper.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+import Navbar from './components/navbar/Navbar.js'
+
 // Containers
 import Home from './containers/Home.js';
 import Equalities from './containers/Equalities';
-import EditClientContainer from './containers/EditClient';
+import EditClient from './containers/EditClient';
 import ExistingClients from './containers/ExistingClients';
-import NewClientContainer from './containers/RegisterClient';
+import RegisterClient from './containers/RegisterClient';
 import ClientAssessment from './containers/ClientAssessment';
-import DetailedClientContainer from './containers/DetailedClient';
+import DetailedClient from './containers/DetailedClient';
 
 
 
@@ -24,42 +27,32 @@ class App extends Component {
     return (
 
 
-      <div className="container-fluid px-0">
+
         <Router>
-          <>
 
-          <nav className="nav navbar-expand-lg navbar-dark bg-dark mb-3 mx-0 px-3">
-            <Link to="/" className="navbar-brand logo-text">Feniks</Link>
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link to="/register-client" className="nav-link">New Client</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/client-list" className="nav-link">Clients</Link>
-              </li>
-            </ul>
-          </nav>
+          <Fragment>
 
-
+            <Navbar/>
 
           <div className="content-area mx-5">
             <Route exact path="/" component={Home} />
-            <Route path="/register-client" component={NewClientContainer} />
+            <Route path="/equality" component={Equalities} />
             <Route path="/client-list" component={ExistingClients} />
             <Route path="/assessment-form" component={ClientAssessment} />
+            <Route path="/register-client" component={RegisterClient} />
             <Route path="/client-profile/:id" render = {(props) => {
               const id = props.match.params.id;
-              return <DetailedClientContainer id = {id}/>
+              return <DetailedClient id = {id}/>
             }}/>
             <Route path="/edit/:id" render = {(props) => {
               const id = props.match.params.id;
-              return <EditClientContainer id = {id}/>
+              return <EditClient id = {id}/>
             }}/>
-            <Route path="/equality" component={Equalities} />
           </div>
-        </>
+
+        </Fragment>
       </Router>
-    </div>
+
   );
 }
 }

@@ -25,13 +25,13 @@ class EditClientContainer extends Component{
     let request = new Request();
     const urldelete = "https://ibog5q1ds7.execute-api.eu-west-1.amazonaws.com/Production/clients/" + id;
     // debugger
-    request.delete(urldelete).then(() => {window.location = "/clients/"})
+    request.delete(urldelete).then(() => {window.location = "/client-list/"})
   }
 
   handleClientPut(client){
     const request = new Request();
     const urlput = "https://ibog5q1ds7.execute-api.eu-west-1.amazonaws.com/Production/clients/" + this.props.id;
-    request.patch(urlput, client).then(() => window.location = "/clients")
+    request.patch(urlput, client).then(() => window.location = "/client-list")
   }
 
   render(){

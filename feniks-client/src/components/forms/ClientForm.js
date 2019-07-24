@@ -1,4 +1,4 @@
-import React,{Component,Fragment,Link} from 'react';
+import React,{Fragment} from 'react';
 
 const NewClient = (props)=>{
   function handleSubmit(event){
