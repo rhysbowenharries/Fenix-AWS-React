@@ -32,6 +32,11 @@ class ExistingClients extends Component {
             this.setState({filteredClients:filteredClients})
         }
 
+        handleClientPost(client){
+            const request = new Request();
+            request.post(`${url}`, client).then(() => window.location = "/equality-form")
+        }
+
         render(){
             return(
 
@@ -69,7 +74,7 @@ class ExistingClients extends Component {
 
                             {
                                 this.state.filteredClients.map((client) =>{
-                                    return (<ClientList key={client.id} client={client} />);
+                                    return (<ClientList key={client.id} client={client} handleClientPost={this.handleClientPost} />);
                                 })
                             }
                         </div>

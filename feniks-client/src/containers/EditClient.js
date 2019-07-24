@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Request from '../helper/Request.js';
-import EditClient from '../components/EditClient.js';
+import ClientForm from '../components/forms/ClientForm.js';
 import {url} from '../helper/AwsRoute.js';
 
 class EditClientContainer extends Component{
@@ -38,7 +38,7 @@ class EditClientContainer extends Component{
     if(!this.state.client){
       return null;
     }
-    return <EditClient client = {this.state.client} handleClientDelete = {this.handleClientDelete} handleClientPut = {this.handleClientPut}/>
+    return <ClientForm client = {this.state.client} handleClientDelete = {this.handleClientDelete} handleClientPut = {this.handleClientPut}/>
   }
 
 };
