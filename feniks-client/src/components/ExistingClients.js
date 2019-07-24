@@ -1,10 +1,10 @@
 import React,{Fragment, Component} from 'react';
 import {Link} from 'react-router-dom';
-import Request from '../../helper/Request.js'
-import {url} from '../../helper/AwsRoute.js';
-import ClientSearchForm from '../bits/ClientSearchForm.js';
+import Request from '../helper/Request.js'
+import {url} from '../helper/AwsRoute.js';
+import ClientSearchForm from './ClientSearchForm.js';
 
-import ClientList from '../bits/ClientList.js';
+import ClientList from './ClientList.js';
 
 
 class ExistingClients extends Component{

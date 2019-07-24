@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Request from '../helper/Request.js';
-import EditClient from '../components/pages/EditClient.js';
+import EditClient from '../components/EditClient.js';
 import {url} from '../helper/AwsRoute.js';
 
 class EditClientContainer extends Component{

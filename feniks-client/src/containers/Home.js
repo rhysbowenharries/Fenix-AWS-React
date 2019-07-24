@@ -1,5 +1,7 @@
 import React,{Fragment} from 'react';
 
+
+// this should be a class if we are going to have a dash board. 
 const Home=()=>(
   <Fragment>
     <div className="row my-3">

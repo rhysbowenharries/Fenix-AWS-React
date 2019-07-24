@@ -3,17 +3,18 @@ import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
 import 'bootstrap';
 import 'popper.js/dist/popper.js';
 
-import Home from './components/pages/Home.js';
-import NewClient from './components/pages/NewClient.js';
-import ExistingClients from './components/pages/ExistingClients.js';
 
+import NewClient from './components/NewClient.js';
+import ExistingClients from './components/ExistingClients.js';
+
+import Home from './containers/Home.js';
 import NewClientContainer from './containers/NewClientContainer'
 import DetailedClientContainer from './containers/DetailedClientContainer'
 import EditClientContainer from './containers/EditClientContainer'
-import ClientAssessment from './components/pages/ClientAssessment.js'
-import ClientInfo from './components/pages/ClientInfo.js'
-import EditClient from './components/pages/EditClient.js'
-import Equalities from './components/pages/Equalities.js'
+import ClientAssessment from './components/ClientAssessment.js'
+import ClientInfo from './components/ClientInfo.js'
+import EditClient from './components/EditClient.js'
+import Equalities from './components/Equalities.js'
 
 import './css/feniks_style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
