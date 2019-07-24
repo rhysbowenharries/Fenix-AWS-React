@@ -38,7 +38,7 @@ class EditClientContainer extends Component{
     if(!this.state.client){
       return null;
     }
-    return <ClientForm client = {this.state.client} handleClientDelete = {this.handleClientDelete} handleClientPut = {this.handleClientPut}/>
+    return <ClientForm  mode="EDIT" client = {this.state.client} handleClientDelete = {this.handleClientDelete} handleClientPut = {this.handleClientPut}/>
   }
 
 };
