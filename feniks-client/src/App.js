@@ -9,12 +9,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Containers
 import Home from './containers/Home.js';
-import ClientAssessment from './containers/ClientAssessment'
-import Equalities from './containers/EqualitiesForm'
-import NewClientContainer from './containers/NewClient'
-import EditClientContainer from './containers/EditClient'
+import Equalities from './containers/Equalities';
+import EditClientContainer from './containers/EditClient';
 import ExistingClients from './containers/ExistingClients';
-import DetailedClientContainer from './containers/DetailedClient'
+import NewClientContainer from './containers/RegisterClient';
+import ClientAssessment from './containers/ClientAssessment';
+import DetailedClientContainer from './containers/DetailedClient';
 
 
 
