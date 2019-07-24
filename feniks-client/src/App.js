@@ -3,6 +3,10 @@ import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
 import 'bootstrap';
 import 'popper.js/dist/popper.js';
 
+
+import { Nav, Navbar,} from "react-bootstrap";
+
+
 import Home from './components/pages/Home.js';
 import NewClient from './components/pages/NewClient.js';
 import ExistingClients from './components/pages/ExistingClients.js';
@@ -39,6 +43,12 @@ class App extends Component {
                 </li>
                 <li className="nav-item">
                   <Link to="/clients" className="nav-link">Clients</Link>
+                </li>
+                <li className= "nav-item">
+                  <Link to="/signup" className="nav-link">Signup</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link">Login</Link>
                 </li>
               </ul>
             </div>
