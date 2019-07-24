@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Request from '../helper/Request.js';
-import NewClient from '../components/NewClient.js';
+import NewClient from '../components/forms/PatientForm.js';
 import {url} from '../helper/AwsRoute.js';
 
 

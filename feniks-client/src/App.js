@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
+
+
 import 'bootstrap';
-import 'popper.js/dist/popper.js';
-
-
-import NewClient from './components/NewClient.js';
-import ExistingClients from './components/ExistingClients.js';
-
-import Home from './containers/Home.js';
-import NewClientContainer from './containers/NewClientContainer'
-import DetailedClientContainer from './containers/DetailedClientContainer'
-import EditClientContainer from './containers/EditClientContainer'
-import ClientAssessment from './components/ClientAssessment.js'
-import ClientInfo from './components/ClientInfo.js'
-import EditClient from './components/EditClient.js'
-import Equalities from './components/Equalities.js'
-
 import './css/feniks_style.css';
+import 'popper.js/dist/popper.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// import 'bootstrap/dist/js/bootstrap.min.js';
+// Containers
+import Home from './containers/Home.js';
+import ClientAssessment from './containers/ClientAssessment'
+import Equalities from './containers/EqualitiesForm'
+import NewClientContainer from './containers/NewClient'
+import EditClientContainer from './containers/EditClient'
+import ExistingClients from './containers/ExistingClients';
+import DetailedClientContainer from './containers/DetailedClient'
+
+
+
 
 class App extends Component {
   render() {
