@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
 import 'bootstrap';
 import 'popper.js/dist/popper.js';
+import Login from "./containers/Login";
+
 
 
 import { Nav, Navbar,} from "react-bootstrap";
@@ -58,6 +60,7 @@ class App extends Component {
             <Route path="/newclient" component={NewClientContainer} />
             <Route path="/clients" component={ExistingClients} />
             <Route path="/assess" component={ClientAssessment} />
+            <Route path="/login" exact component={Login} />
             <Route path="/details/:id" render = {(props) => {
               const id = props.match.params.id;
               return <DetailedClientContainer id = {id}/>
