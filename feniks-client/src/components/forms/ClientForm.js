@@ -6,11 +6,11 @@ class ClientForm extends Component{
     super(props)
 
     if(props.mode !== "EDIT"){
-    this.state = {
-      address:{},
-      project:{},
-      client:{}
-    }
+      this.state = {
+        address:{},
+        project:{},
+        client:{}
+      }
     }else{
       this.state = {
         address:props.address,
@@ -20,6 +20,11 @@ class ClientForm extends Component{
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.selectingClientTitle = this.selectingClientTitle.bind(this)
+    this.selectAllRadioProjectButtons = this.selectAllRadioProjectButtons.bind(this)
+    this.selectingClientGender = this.selectingClientGender.bind(this)
+    this.selectingClientEmployment = this.selectingClientEmployment.bind(this)
   }
 
   handleSubmit(event){
@@ -31,8 +36,8 @@ class ClientForm extends Component{
       "address2": event.target.address2.value,
       "address3": event.target.address3.value,
       "address4": event.target.address4.value
-      }
-    });
+    }
+  });
 
   this.setState({ projects:{
     "active50":event.target.project1.checked,
@@ -68,6 +73,82 @@ class ClientForm extends Component{
 
   this.props.handleClientPost();
   this.props.handleClientPut(this.state);
+
+}
+
+
+selectingClientTitle(){
+  const clientTitle = document.getElementById('title')
+  for(let i = 0; i < clientTitle.length; i++) {
+    let clientTitleOption = clientTitle[i];
+    console.log(typeof clientTitleOption.value);
+    console.log( typeof this.props.client.title);
+    if (clientTitleOption.value === this.props.client.title){
+      console.log(clientTitleOption.selected = true);
+    }
+  }
+}
+
+
+selectingClientGender(){
+  const clientGender = document.getElementById('gender')
+  for(let i = 0; i < clientGender.length; i++) {
+    let clientGenderOption = clientGender[i];
+    console.log(typeof clientGenderOption.value);
+    console.log( typeof this.props.client.gender);
+    if (clientGenderOption.value === this.props.client.gender){
+      console.log(clientGenderOption.selected = true);
+    }
+  }
+}
+
+selectingClientNationality(){
+  const clientNationality = document.getElementById('nationality')
+  for(let i = 0; i < clientNationality.length; i++) {
+    let clientNationalityOption = clientNationality[i];
+    console.log(typeof clientNationalityOption.value);
+    console.log( typeof this.props.client.nationality);
+    if (clientNationalityOption.value === this.props.client.nationality){
+      console.log(clientNationalityOption.selected = true);
+    }
+  }
+}
+
+selectingClientEmployment(){
+  const clientEmployment = document.getElementById('employment')
+  for(let i = 0; i < clientEmployment.length; i++) {
+    let clientEmploymentOption = clientEmployment[i];
+    console.log(typeof clientEmploymentOption.value);
+    console.log( typeof this.props.client.employment);
+    if (clientEmploymentOption.value === this.props.client.employment){
+      console.log(clientEmploymentOption.selected = true);
+    }
+  }
+}
+
+selectAllRadioProjectButtons(){
+  const allRadioButtons = document.getElementsByClassName('project')
+  console.log(allRadioButtons);
+  for(let i = 0; i < allRadioButtons.length; i++) {
+
+    let allRadioButtonsOption = allRadioButtons[i];
+    let clientsProjectOptions = this.props.client.projects
+    for( let key in clientsProjectOptions ){
+      if(clientsProjectOptions[key] === true){
+        const allRadioButtons = document.getElementsByClassName(key)
+      }
+
+    }
+
+  }
+}
+
+componentDidMount(){
+  this.selectingClientTitle()
+  this.selectingClientGender()
+  this.selectingClientNationality()
+  this.selectingClientEmployment()
+  this.selectAllRadioProjectButtons()
 }
 
 
@@ -258,33 +339,33 @@ render(){
         </div>
 
         <div className="form-group form-check form-check-inline">
-          <input type="checkbox" id="project1" name="project1" className="form-check-input"/>
+          <input type="checkbox" id="project1" name="Active 50+" className="form-check-input project"/>
           <label className="form-check-label" htmlFor="project1" value="1">Active 50+</label>
-          <input type="checkbox" id="project2" name="project2" className="form-check-input"/>
-          <label className="form-check-label" htmlFor="project2" value="1">Counselling / Therapy</label>
-          <input type="checkbox" id="project3" name="project3" className="form-check-input"/>
-          <label className="form-check-label" htmlFor="project3" value="1">Group Therapy</label>
+          <input type="checkbox" id="project2" name="Counselling / Therapy" className="form-check-input project"/>
+          <label className="form-check-label " htmlFor="project2" value="1">Counselling / Therapy</label>
+          <input type="checkbox" id="project3" name="Group Therapy" className="form-check-input project"/>
+          <label className="form-check-label " htmlFor="project3" value="1">Group Therapy</label>
         </div>
 
         <br/>
 
         <div className="form-group form-check form-check-inline">
-          <input type="checkbox" id="project4" name="project4" className="form-check-input"/>
-          <label className="form-check-label" htmlFor="project4" value="1">Toddler Group</label>
-          <input type="checkbox" id="project5" name="project5" className="form-check-input"/>
-          <label className="form-check-label" htmlFor="project5" value="1">Survivors' Group</label>
-          <input type="checkbox" id="project6" name="project6" className="form-check-input"/>
-          <label className="form-check-label" htmlFor="project6" value="1">Personal Development Workshops</label>
+          <input type="checkbox" id="project4" name="Toddler Group" className="form-check-input project"/>
+          <label className="form-check-label " htmlFor="project4" value="1">Toddler Group</label>
+          <input type="checkbox" id="project5" name="Survivors' Group" className="form-check-input project"/>
+          <label className="form-check-label " htmlFor="project5" value="1">Survivors' Group</label>
+          <input type="checkbox" id="project6" name="Personal Development Workshops" className="form-check-input project"/>
+          <label className="form-check-label " htmlFor="project6" value="1">Personal Development Workshops</label>
         </div>
 
         <br/>
 
         <div className="form-group form-check form-check-inline">
-          <input type="checkbox" id="project7" name="project7" className="form-check-input"/>
+          <input type="checkbox" id="project7" name="Leith Conversation Cafes" className="form-check-input"/>
           <label className="form-check-label" htmlFor="project7" value="1">Leith Conversation Cafes</label>
-          <input type="checkbox" id="project8" name="project8" className="form-check-input"/>
+          <input type="checkbox" id="project8" name="SMART Recovery" className="form-check-input"/>
           <label className="form-check-label" htmlFor="project8" value="1">SMART Recovery</label>
-          <input type="checkbox" id="project9" name="project9" className="form-check-input"/>
+          <input type="checkbox" id="project9" name="Other" className="form-check-input"/>
           <label className="form-check-label" htmlFor="project9" value="1">Other</label>
         </div>
 
