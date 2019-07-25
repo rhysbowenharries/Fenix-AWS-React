@@ -45,7 +45,7 @@ class ClientAssessmentForm extends Component {
     this.setState({
       clientInformation: {
         "healthText": event.target.healthText.value,
-        "mediocationText": event.target.mediocationText.value,
+        "medicationText": event.target.medicationText.value,
         "alcoholdrugsText": event.target.alcoholdrugsText.value,
         "selfharmText": event.target.selfharmText.value,
         "suicideconsText": event.target.suicideconsText.value,
@@ -64,8 +64,8 @@ class ClientAssessmentForm extends Component {
         "drugs": event.target.drugsCheckbox.value,
         "gambling": event.target.gamblingCheckbox.value,
         "otherAddiction": event.target.otherAddictionCheckbox.value,
-        "substanceAbucseHistory": event.target.substanceAbucseHistoryCheckbox.value,
-        "angerAggression": event.target.angerAggressionCheckbox.value,
+        "substanceAbuseHistory": event.target.substanceAbuseHistoryCheckbox.value,
+        "angerAgression": event.target.angerAgressionCheckbox.value,
         "anxiety": event.target.anxietyCheckbox.value,
         "bereavement": event.target.bereavementCheckbox.value,
         "bullying": event.target.bullyingCheckbox.value,
@@ -114,8 +114,10 @@ class ClientAssessmentForm extends Component {
         "notesText": event.target.notesText.value
       }
     })
-    
+
     this.props.handleAssessmentPost()
+
+    // TODO: write handleAssessmentPost
   }
 
   render() {
@@ -392,8 +394,8 @@ class ClientAssessmentForm extends Component {
             <div className="form-group form-check form-check-inline">
               <input type="checkbox" id="personalityDisorderCheckbox" name="personalityDisorderCheckbox" className="form-check-input" />
               <label className="form-check-label" htmlFor="personalityDisorderCheckbox">Personality Disorders</label>
-              <input type="checkbox" id="phobiasCheckBox" name="phobiasCheckBox" className="form-check-input" />
-              <label className="form-check-label" htmlFor="phobiasCheckBox">Phobias</label>
+              <input type="checkbox" id="phobiasCheckbox" name="phobiasCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="phobiasCheckbox">Phobias</label>
               <input type="checkbox" id="psychosisCheckbox" name="psychosisCheckbox" className="form-check-input" />
               <label className="form-check-label" htmlFor="psychosisCheckbox">Psychosis</label>
               <input type="checkbox" id="selfEsteemCheckbox" name="selfEsteemCheckbox" className="form-check-input" />
