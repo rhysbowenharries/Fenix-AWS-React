@@ -5,7 +5,13 @@ import {BrowserRouter as Router,Route} from 'react-router-dom';
 import 'bootstrap';
 import './css/feniks_style.css';
 import 'popper.js/dist/popper.js';
+import Login from "./containers/Login";
+
+
+
+// import { Nav, Navbar,} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 import Navbar from './components/navbar/Navbar.js'
@@ -36,6 +42,7 @@ class App extends Component {
 
           <div className="content-area mx-5">
             <Route exact path="/" component={Home} />
+            <Route path="/login" exact component={Login} />
             <Route path="/equality" component={Equalities} />
             <Route path="/client-list" component={ExistingClients} />
             <Route path="/assessment-form" component={ClientAssessment} />
