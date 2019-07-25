@@ -1,10 +1,10 @@
-import React,{Component,Fragment} from 'react';
+import React,{Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
 const Equalities =(props)=> {
   function handleSubmit(event){
     event.preventDefault();
-  
+
     const equalities = {
       "age":"35",
       "employment":"#",
@@ -48,9 +48,9 @@ const Equalities =(props)=> {
             <div className="form-group row">
               <label htmlFor="gender" className="col-sm-12 col-form-label">Gender</label>
             </div>
-           
+
             <hr/>
-            
+
             <hr/>
             <div className="form-group row">
               <label htmlFor="orientation" className="col-sm-12 col-form-label">Please select the option which best describes your sexual orientation</label>

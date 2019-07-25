@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Request from '../helper/Request.js';
-import EditClient from '../components/pages/EditClient.js';
+import ClientForm from '../components/forms/ClientForm.js';
 import {url} from '../helper/AwsRoute.js';
 
 class EditClientContainer extends Component{
@@ -25,20 +25,20 @@ class EditClientContainer extends Component{
     let request = new Request();
     const urldelete = "https://ibog5q1ds7.execute-api.eu-west-1.amazonaws.com/Production/clients/" + id;
     // debugger
-    request.delete(urldelete).then(() => {window.location = "/clients/"})
+    request.delete(urldelete).then(() => {window.location = "/client-list/"})
   }
 
   handleClientPut(client){
     const request = new Request();
     const urlput = "https://ibog5q1ds7.execute-api.eu-west-1.amazonaws.com/Production/clients/" + this.props.id;
-    request.patch(urlput, client).then(() => window.location = "/clients")
+    request.patch(urlput, client).then(() => window.location = "/client-list")
   }
 
   render(){
     if(!this.state.client){
       return null;
     }
-    return <EditClient client = {this.state.client} handleClientDelete = {this.handleClientDelete} handleClientPut = {this.handleClientPut}/>
+    return <ClientForm  mode="EDIT" client = {this.state.client} handleClientDelete = {this.handleClientDelete} handleClientPut = {this.handleClientPut}/>
   }
 
 };
