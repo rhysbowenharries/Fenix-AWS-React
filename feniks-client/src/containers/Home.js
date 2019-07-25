@@ -1,5 +1,5 @@
 import React,{Fragment} from 'react';
-import castle from '../public/images/home-bg.jpg'
+import castle from '../images/home-bg.jpg'
 
 
 // this should be a class if we are going to have a dash board.
