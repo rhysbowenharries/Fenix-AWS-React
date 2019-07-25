@@ -7,12 +7,13 @@ import ClientAssessmentForm from '../components/forms/ClientAssessmentForm'
 
 class ClientAssessment extends Component{
 
-    // constructor(props){
-    //     super(props)
-    // }
+    constructor(props){
+        super(props)
+        this.state = { id:this.props }
+    }
 
     render(){
-        return <ClientAssessmentForm/>
+        return <ClientAssessmentForm client={this.state.id}/>
     }
 
 };

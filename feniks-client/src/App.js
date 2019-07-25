@@ -45,7 +45,10 @@ class App extends Component {
             <Route path="/login" exact component={Login} />
             <Route path="/equality" component={Equalities} />
             <Route path="/client-list" component={ExistingClients} />
-            <Route path="/assessment-form" component={ClientAssessment} />
+            <Route path="/assessment-form/:id" render={(props) => {
+              const id = props.match.params.id;
+              return <ClientAssessment id={id} />
+            }}/>
             <Route path="/register-client" component={RegisterClient} />
             <Route path="/client-profile/:id" render = {(props) => {
               const id = props.match.params.id;

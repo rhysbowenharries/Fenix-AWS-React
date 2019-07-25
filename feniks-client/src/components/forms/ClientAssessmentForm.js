@@ -2,7 +2,8 @@ import React,{Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
 const ClientAssessmentForm=(props)=>{
-  function handleSubmit(event){
+  function handleSubmit(event) {
+    
     event.preventDefault();
 
     const assessment = {
@@ -21,9 +22,9 @@ const ClientAssessmentForm=(props)=>{
         </div>
         <div className="row">
           <div className="col-sm-12 btn-group">
-            <Link to="/details" className="btn btn-lg btn-info">Client Details</Link>
-            <Link to="/edit" className="btn btn-lg btn-info">Edit Client</Link>
-            <Link to="/assess" className="btn btn-lg btn-info disabled">Client Assessment</Link>
+            <Link to={"/client-profile/" + props.client.id} className="btn btn-lg btn-info">Client Details</Link>
+            <Link to={"/edit/" + props.client.id} className="btn btn-lg btn-info">Edit Client</Link>
+            <Link to={"/assess/"+ props.client.id} className="btn btn-lg btn-info disabled">Client Assessment</Link>
           </div>
         </div>
       </div>
@@ -57,6 +58,7 @@ const ClientAssessmentForm=(props)=>{
             </div>
             <div className="col-sm-12">
               <table>
+                <tbody>
                 <tr>
                   <th></th>
                   <th>Monday</th>
@@ -92,7 +94,8 @@ const ClientAssessmentForm=(props)=>{
                   <td><input type="text" id="thursday-evening" name="thursday-evening" className="form-control"/></td>
                   <td><input type="text" id="friday-evening" name="friday-evening" className="form-control"/></td>
                   <td><input type="text" id="saturday-evening" name="saturday-evening" className="form-control"/></td>
-                </tr>
+                  </tr>
+                  </tbody>
               </table>
             </div>
           </div>
