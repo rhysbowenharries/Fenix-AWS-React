@@ -169,6 +169,7 @@ selectAllCheckDetailButtons(){
 
 
 componentDidMount(){
+  if(this.props.mode === "EDIT"){
   this.selectingClientTitle()
   this.selectingClientGender()
   this.selectingClientNationality()
@@ -176,6 +177,7 @@ componentDidMount(){
   this.selectAllRadioProjectButtons()
   this.selectAllCheckDetailButtons()
   this.selectAllRadioHearButtons()
+ }
 }
 
 
