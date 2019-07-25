@@ -12,9 +12,10 @@ class ClientForm extends Component{
         client:{}
       }
     }else{
+
       this.state = {
-        address:props.address,
-        project:props.project,
+        address:props.client.address,
+        project:props.client.project,
         client:props.client
       }
     }
@@ -26,6 +27,7 @@ class ClientForm extends Component{
     this.selectingClientGender = this.selectingClientGender.bind(this)
     this.selectingClientEmployment = this.selectingClientEmployment.bind(this)
     this.selectAllCheckDetailButtons = this.selectAllCheckDetailButtons.bind(this)
+    this.selectAllRadioHearButtons = this.selectAllRadioHearButtons.bind(this)
   }
 
   handleSubmit(event){
@@ -83,6 +85,7 @@ selectingClientTitle(){
   for(let i = 0; i < clientTitle.length; i++) {
     let clientTitleOption = clientTitle[i];
     if (clientTitleOption.value === this.props.client.title){
+      clientTitleOption.selected = this.props.client.title
     }
   }
 }
@@ -93,6 +96,7 @@ selectingClientGender(){
   for(let i = 0; i < clientGender.length; i++) {
     let clientGenderOption = clientGender[i];
     if (clientGenderOption.value === this.props.client.gender){
+      clientGenderOption.selected = this.props.client.gender
     }
   }
 }
@@ -102,6 +106,7 @@ selectingClientNationality(){
   for(let i = 0; i < clientNationality.length; i++) {
     let clientNationalityOption = clientNationality[i];
     if (clientNationalityOption.value === this.props.client.nationality){
+      clientNationalityOption.selected = this.props.client.nationality
     }
   }
 }
@@ -111,6 +116,7 @@ selectingClientEmployment(){
   for(let i = 0; i < clientEmployment.length; i++) {
     let clientEmploymentOption = clientEmployment[i];
     if (clientEmploymentOption.value === this.props.client.employment){
+      clientEmploymentOption.selected = this.props.client.employment
     }
   }
 }
@@ -123,6 +129,17 @@ selectAllRadioProjectButtons(){
       allRadioButtonsSelected.forEach(selected => {
         selected.checked = true;
       })
+    }
+  }
+}
+
+
+selectAllRadioHearButtons(){
+  let clientsProjectOptions = this.props.client.hear
+  const allRadioHearOptions = document.getElementsByClassName('hear')
+  for(let i = 0; i < allRadioHearOptions.length; i++){
+    if(clientsProjectOptions === allRadioHearOptions[i].name){
+      allRadioHearOptions[i].checked = true
     }
   }
 }
@@ -143,19 +160,10 @@ selectAllCheckDetailButtons(){
     if(this.props.client[key] === true){
       const selection = document.getElementsByName(key)
       selection.forEach(selected => {
-        console.log(selected);
         selected.checked = true;
       })
     }
   })
-
-  // const contactOptions = [leaveMessageOption, fromFeniksOption, mailingOption ]
-  //   if(clientsProjectOptions[key] === true){
-  //     const allRadioButtonsSelected = document.getElementsByName(key)
-  //     allRadioButtonsSelected.forEach(selected => {
-  //       selected.checked = true;
-  //     })
-  //   }
   }
 
 
@@ -167,6 +175,7 @@ componentDidMount(){
   this.selectingClientEmployment()
   this.selectAllRadioProjectButtons()
   this.selectAllCheckDetailButtons()
+  this.selectAllRadioHearButtons()
 }
 
 
@@ -279,26 +288,26 @@ render(){
         <div className="form-group row">
           <label htmlFor="address1" className="col-sm-2 col-form-label">Address Line 1</label>
           <div className="col-sm-9">
-            <input type="text" id="address1" name="address1" className="form-control"  placeholder="House name / number"/>
+            <input type="text" id="address1" name="address1" className="form-control"  placeholder="House name / number" value={this.state.address.address1}/>
           </div>
         </div>
 
         <div className="form-group row">
           <label htmlFor="address2" className="col-sm-2 col-form-label">Address Line 2</label>
           <div className="col-sm-9">
-            <input type="text" id="address2" name="address2" className="form-control"  placeholder="Street" />
+            <input type="text" id="address2" name="address2" className="form-control"  placeholder="Street"  value={this.state.address.address2}/>
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="address3" className="col-sm-2 col-form-label">Address Line 3</label>
           <div className="col-sm-9">
-            <input type="text" id="address3" name="address3" className="form-control" placeholder="Town"/>
+            <input type="text" id="address3" name="address3" className="form-control" placeholder="Town" value={this.state.address.address3}/>
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="address4" className="col-sm-2 col-form-label">Address Line 4</label>
           <div className="col-sm-9">
-            <input type="text" id="address4" name="address4" className="form-control" placeholder="Postcode" />
+            <input type="text" id="address4" name="address4" className="form-control" placeholder="Postcode" value={this.state.address.address4} />
           </div>
         </div>
         <div className="form-group row">
@@ -397,20 +406,20 @@ render(){
           <label htmlFor="hear" className="col-sm-12 col-form-label">How did you hear about Feniks?</label>
         </div>
         <div className="form-group form-check form-check-inline">
-          <input type="radio" id="hear1" name="hear" className="form-check-input" value="1"/>
+          <input type="radio" id="hear1" name="1" className="form-check-input hear" value="emito"/>
           <label className="form-check-label" htmlFor="hear1">Emito</label>
-          <input type="radio" id="hear2" name="hear" className="form-check-input" value="2"/>
+          <input type="radio" id="hear2" name="2" className="form-check-input hear" value="fenicksWebsite"/>
           <label className="form-check-label" htmlFor="hear2">Feniks' Website</label>
-          <input type="radio" id="hear3" name="hear" className="form-check-input" value="3"/>
+          <input type="radio" id="hear3" name="3" className="form-check-input hear" value="family"/>
           <label className="form-check-label" htmlFor="hear3">Friend / Family Member</label>
         </div>
         <br/>
         <div className="form-group form-check form-check-inline">
-          <input type="radio" id="hear4" name="hear" className="form-check-input" value="4"/>
+          <input type="radio" id="hear4" name="4" className="form-check-input hear" value="gp"/>
           <label className="form-check-label" htmlFor="hear4">GP</label>
-          <input type="radio" id="hear5" name="hear" className="form-check-input" value="5"/>
+          <input type="radio" id="hear5" name="5" className="form-check-input hear" value="leaflet"/>
           <label className="form-check-label" htmlFor="hear5">Leaflet</label>
-          <input type="radio" id="hear6" name="hear" className="form-check-input" value="6"/>
+          <input type="radio" id="hear6" name="6" className="form-check-input hear" value="other"/>
           <label className="form-check-label" htmlFor="hear6">Other</label>
         </div>
       </div>
