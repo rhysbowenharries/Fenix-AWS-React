@@ -56,6 +56,48 @@ class ClientAssessmentForm extends Component {
       }
     })
 
+    this.setState({
+      presentingIssues: {
+        "abuseTrauma": event.target.abuseTraumaCheckbox.value,
+        "adaptation": event.target.adaptationCheckbox.value,
+        "alcohol": event.target.alcoholCheckbox.value,
+        "drugs": event.target.drugsCheckbox.value,
+        "gambling": event.target.gamblingCheckbox.value,
+        "otherAddiction": event.target.otherAddictionCheckbox.value,
+        "substanceAbucseHistory": event.target.substanceAbucseHistoryCheckbox.value,
+        "angerAggression": event.target.angerAggressionCheckbox.value,
+        "anxiety": event.target.anxietyCheckbox.value,
+        "bereavement": event.target.bereavementCheckbox.value,
+        "bullying": event.target.bullyingCheckbox.value,
+        "childhoodIssues": event.target.childhoodIssuesCheckbox.value,
+        "cognitiveLearning": event.target.cognitiveLearningCheckbox.value,
+        "emotions": event.target.emotionsCheckbox.value,
+        "depression": event.target.depressionCheckbox.value,
+        "domesticViolence": event.target.domesticViolenceCheckbox.value,
+        "eatingDisorder": event.target.eatingDisorderCheckbox.value,
+        "familyDifficulty": event.target.familyDifficultyCheckbox.value,
+        "genderSexuality": event.target.genderSexualityCheckbox.value,
+        "interpersonalRelationships": event.target.interpersonalRelationshipsCheckbox.value,
+        "isolation": event.target.isolationCheckbox.value,
+        "livingWelfare": event.target.livingWelfareCheckbox.value,
+        "mentalHealth": event.target.mentalHealthCheckbox.value,
+        "moodDisorder": event.target.moodDisorderCheckbox.value,
+        "panicAttack": event.target.panicAttackCheckbox.value,
+        "personalityDisorder": event.target.personalityDisorderCheckbox.value,
+        "phobias": event.target.phobiasCheckbox.value,
+        "psychosis": event.target.psychosisCheckbox.value,
+        "selfEsteem": event.target.selfEsteemCheckbox.value,
+        "selfHarm": event.target.selfHarmCheckbox.value,
+        "sexual": event.target.sexualCheckbox.value,
+        "stress": event.target.stressCheckbox.value,
+        "studies": event.target.studiesCheckbox.value,
+        "suicidalThoughts": event.target.suicidalThoughtsCheckbox.value,
+        "suicidalAttempts": event.target.suicidalAttemptsCheckbox.value,
+        "work": event.target.workCheckbox.value,
+        "other": event.target.otherCheckbox.value
+      }
+    })
+
     this.props.handleAssessmentPost()
   }
 
@@ -371,11 +413,11 @@ class ClientAssessmentForm extends Component {
                 </div>
               </div>
               <div className="row">
-                <label htmlFor="counsellinggoal-text" className="col-sm-12 col-form-label">What would the client like from therapy / counselling</label>
+                <label htmlFor="counsellinggoalText" className="col-sm-12 col-form-label">What would the client like from therapy / counselling</label>
               </div>
               <div className="row">
                 <div className="col-sm-12">
-                  <textarea id="counsellinggoal-text" name="counsellinggoal-text" className="form-control" rows="7" />
+                  <textarea id="counsellinggoalText" name="counsellinggoalText" className="form-control" rows="7" />
                 </div>
               </div>
             </div>
@@ -387,35 +429,35 @@ class ClientAssessmentForm extends Component {
             </div>
             <div className="form-group">
               <div className="row">
-                <label htmlFor="thoughts-text" className="col-sm-12 col-form-label">Assessment therapists / counsellors thoughts and feelings during and after session</label>
+                <label htmlFor="thoughtsText" className="col-sm-12 col-form-label">Assessment therapists / counsellors thoughts and feelings during and after session</label>
               </div>
               <div className="row">
                 <div className="col-sm-12">
-                  <textarea id="thoughts-text" name="thoughts-text" className="form-control" rows="7" />
+                  <textarea id="thoughtsText" name="thoughtsText" className="form-control" rows="7" />
                 </div>
               </div>
               <div className="row">
-                <label htmlFor="appropriate-text" className="col-sm-12 col-form-label">Appropriate for therapy / counselling?</label>
+                <label htmlFor="appropriateText" className="col-sm-12 col-form-label">Appropriate for therapy / counselling?</label>
               </div>
               <div className="row">
                 <div className="col-sm-12">
-                  <textarea id="appropriate-text" name="appropriate-text" className="form-control" rows="7" />
+                  <textarea id="appropriateText" name="appropriateText" className="form-control" rows="7" />
                 </div>
               </div>
               <div className="row">
-                <label htmlFor="type-text" className="col-sm-12 col-form-label">Type of therapist / counsellor required?</label>
+                <label htmlFor="typeText" className="col-sm-12 col-form-label">Type of therapist / counsellor required?</label>
               </div>
               <div className="row">
                 <div className="col-sm-12">
-                  <textarea id="type-text" name="type-text" className="form-control" rows="7" />
+                  <textarea id="typeText" name="typeText" className="form-control" rows="7" />
                 </div>
               </div>
               <div className="row">
-                <label htmlFor="referrals-text" className="col-sm-12 col-form-label">Referrals to other projects suggested</label>
+                <label htmlFor="referralsText" className="col-sm-12 col-form-label">Referrals to other projects suggested</label>
               </div>
               <div className="row">
                 <div className="col-sm-12">
-                  <textarea id="referrals-text" name="referrals-text" className="form-control" rows="7" />
+                  <textarea id="referralsText" name="referralsText" className="form-control" rows="7" />
                 </div>
               </div>
             </div>
@@ -426,11 +468,11 @@ class ClientAssessmentForm extends Component {
             </div>
             <div className="form-group">
               <div className="row">
-                <label htmlFor="thoughts-text" className="col-sm-12 col-form-label">All Notes</label>
+                <label htmlFor="thoughtsText" className="col-sm-12 col-form-label">All Notes</label>
               </div>
               <div className="row">
                 <div className="col-sm-12">
-                  <textarea id="thoughts-text" name="thoughts-text" className="form-control" rows="14" />
+                  <textarea id="thoughtsText" name="thoughtsText" className="form-control" rows="14" />
                 </div>
               </div>
             </div>
