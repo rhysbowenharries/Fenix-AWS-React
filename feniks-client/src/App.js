@@ -1,5 +1,6 @@
 import React, { Component, Fragment} from 'react';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
+import Routes from "./Routes";
 
 
 import 'bootstrap';
@@ -58,6 +59,7 @@ class App extends Component {
             <Navbar/>
 
           <div className="content-area mx-5">
+<<<<<<< HEAD
             <Route exact path="/" component={Home} />
             <Route path="/login" exact component={Login} />
             <Route path="/equality" component={Equalities} />
@@ -75,6 +77,11 @@ class App extends Component {
               const id = props.match.params.id;
               return <EditClient id = {id}/>
             }}/>
+=======
+
+          
+            <Routes />
+>>>>>>> develop
           </div>
 
         </Fragment>
