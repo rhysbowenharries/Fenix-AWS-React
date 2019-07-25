@@ -94,10 +94,27 @@ class ClientAssessmentForm extends Component {
         "suicidalThoughts": event.target.suicidalThoughtsCheckbox.value,
         "suicidalAttempts": event.target.suicidalAttemptsCheckbox.value,
         "work": event.target.workCheckbox.value,
-        "other": event.target.otherCheckbox.value
+        "other": event.target.otherCheckbox.value,
+        "currentIssue": event.target.currentIssue.value,
+        "counsellingGoal": event.target.counsellinggoalText.value
       }
     })
 
+    this.setState({
+      infoForAllocation: {
+        "thoughtsText": event.target.thoughtsText.value,
+        "appropriateText": event.target.appropriateText.value,
+        "typeText": event.target.typeText.value,
+        "referralsText": event.target.referralsText.value,
+      }
+    })
+
+    this.setState({
+      notes: {
+        "notesText": event.target.notesText.value
+      }
+    })
+    
     this.props.handleAssessmentPost()
   }
 
@@ -407,9 +424,9 @@ class ClientAssessmentForm extends Component {
 
             <div className="form-group">
               <div className="row">
-                <label htmlFor="currentissue" className="col-sm-2 col-form-label">Main Current Issue</label>
+                <label htmlFor="currentIssue" className="col-sm-2 col-form-label">Main Current Issue</label>
                 <div className="col-sm-9">
-                  <input type="text" id="currentissue" name="currentissue" className="form-control" placeholder="Main Current Issue" />
+                  <input type="text" id="currentIssue" name="currentIssue" className="form-control" placeholder="Main Current Issue" />
                 </div>
               </div>
               <div className="row">
@@ -468,11 +485,11 @@ class ClientAssessmentForm extends Component {
             </div>
             <div className="form-group">
               <div className="row">
-                <label htmlFor="thoughtsText" className="col-sm-12 col-form-label">All Notes</label>
+                <label htmlFor="notesText" className="col-sm-12 col-form-label">All Notes</label>
               </div>
               <div className="row">
                 <div className="col-sm-12">
-                  <textarea id="thoughtsText" name="thoughtsText" className="form-control" rows="14" />
+                  <textarea id="notesText" name="notesText" className="form-control" rows="14" />
                 </div>
               </div>
             </div>
