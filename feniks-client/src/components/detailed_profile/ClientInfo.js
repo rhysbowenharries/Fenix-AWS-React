@@ -7,7 +7,7 @@ const ClientInfo= (props) => {
 
   for (var key in props.client.projects) {
     var value = props.client.projects[key];
-    if (value == true){
+    if (value === true){
       projects = projects + key + " | ";
     }
   }
@@ -20,9 +20,9 @@ const ClientInfo= (props) => {
       </div>
       <div className="row">
         <div className="col-sm-12 btn-group">
-          <Link to={"/details/"+ props.client.id} className="btn btn-lg btn-info disabled float-right">Client Details</Link>
+          <Link to={"/client-profile/"+ props.client.id} className="btn btn-lg btn-info disabled float-right">Client Details</Link>
           <Link to={"/edit/"+ props.client.id} className="btn btn-lg btn-info float-right">Edit Client</Link>
-          <Link to={"/assess/"+ props.client.id} className="btn btn-lg btn-info float-right">Client Assessment</Link>
+          <Link to={"/assessment-form/"+ props.client.id} className="btn btn-lg btn-info float-right">Client Assessment</Link>
         </div>
       </div>
     </div>

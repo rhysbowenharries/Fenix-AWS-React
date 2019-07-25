@@ -1,7 +1,7 @@
 import React,{Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
-const ClientAssessment=(props)=>{
+const ClientAssessmentForm=(props)=>{
   function handleSubmit(event){
     event.preventDefault();
 
@@ -395,4 +395,4 @@ const ClientAssessment=(props)=>{
     </Fragment>
   )
 }
-export default ClientAssessment;
+export default ClientAssessmentForm;
