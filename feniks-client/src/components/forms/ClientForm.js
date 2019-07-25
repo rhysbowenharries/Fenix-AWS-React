@@ -127,6 +127,8 @@ selectAllRadioProjectButtons(){
   }
 }
 
+
+
 selectAllCheckDetailButtons(){
   let contactMessageKey = 'leavemessage'
   let contactFromFenicksKey = 'fromfeniks'
@@ -142,7 +144,7 @@ selectAllCheckDetailButtons(){
       const selection = document.getElementsByName(key)
       selection.forEach(selected => {
         console.log(selected);
-        selection.checked = true;
+        selected.checked = true;
       })
     }
   })
