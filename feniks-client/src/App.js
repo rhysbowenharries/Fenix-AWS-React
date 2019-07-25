@@ -59,29 +59,9 @@ class App extends Component {
             <Navbar/>
 
           <div className="content-area mx-5">
-<<<<<<< HEAD
-            <Route exact path="/" component={Home} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/equality" component={Equalities} />
-            <Route path="/client-list" component={ExistingClients} />
-            <Route path="/assessment-form/:id" render={(props) => {
-              const id = props.match.params.id;
-              return <ClientAssessment id={id} />
-            }}/>
-            <Route path="/register-client" component={RegisterClient} />
-            <Route path="/client-profile/:id" render = {(props) => {
-              const id = props.match.params.id;
-              return <DetailedClient id = {id}/>
-            }}/>
-            <Route path="/edit/:id" render = {(props) => {
-              const id = props.match.params.id;
-              return <EditClient id = {id}/>
-            }}/>
-=======
 
           
             <Routes />
->>>>>>> develop
           </div>
 
         </Fragment>
