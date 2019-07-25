@@ -1,8 +1,8 @@
 import React, { Component, Fragment} from 'react';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import Routes from "./Routes";
-
-
+import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import 'bootstrap';
 import './css/feniks_style.css';
 import 'popper.js/dist/popper.js';
@@ -15,7 +15,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-import Navbar from './components/navbar/Navbar.js'
+// import Navbar from './components/navbar/Navbar.js'
 
 // Containers
 import Home from './containers/Home.js';
@@ -60,8 +60,31 @@ class App extends Component {
 
           <div className="content-area mx-5">
 
-          
-            <Routes />
+          {this.state.isAuthenticated
+            ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
+            : <Fragment>
+                <LinkContainer to="/signup">
+                  <NavItem>Signup</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/login">
+                  <NavItem>Login</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/equality">
+                  <NavItem>Equalities</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/client-list">
+                  <NavItem>Clients</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/assessment-form">
+                  <NavItem>Assessment form</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/register-client">
+                  <NavItem>New Client</NavItem>
+                </LinkContainer>
+              </Fragment>
+          }
+
+            <Routes childProps={childProps}/>
           </div>
 
         </Fragment>

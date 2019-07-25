@@ -8,12 +8,13 @@ import ClientAssessment from "./containers/ClientAssessment";
 import RegisterClient from "./containers/RegisterClient";
 import DetailedClient from "./containers/DetailedClient";
 import EditClient from "./containers/EditClient";
+import AppliedRoute from "./components/AppliedRoute";
+import NotFound from "./containers/NotFound";
 
 
-export default () =>
+
+export default ({ childProps }) =>
   <Switch>
-    <Route path="/" exact component={Home} />
-    <Route path="/login" exact component={Login} />
     <Route path="/equality" component={Equalities} />
     <Route path="/client-list" component={ExistingClients} />
     <Route path="/assessment-form" component={ClientAssessment} />
@@ -26,4 +27,8 @@ export default () =>
       const id = props.match.params.id;
       return <EditClient id = {id}/>
     }}/>
+    <AppliedRoute path="/" exact component={Home} props={childProps} />
+   <AppliedRoute path="/login" exact component={Login} props={childProps} />
+   { /* Finally, catch all unmatched routes */ }
+   <Route component={NotFound} />
   </Switch>;
