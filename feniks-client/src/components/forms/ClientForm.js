@@ -1,5 +1,7 @@
 import React,{Fragment, Component} from 'react';
 
+
+
 class ClientForm extends Component{
 
   constructor(props){
@@ -28,12 +30,12 @@ class ClientForm extends Component{
     this.selectingClientEmployment = this.selectingClientEmployment.bind(this)
     this.selectAllCheckDetailButtons = this.selectAllCheckDetailButtons.bind(this)
     this.selectAllRadioHearButtons = this.selectAllRadioHearButtons.bind(this)
+    this.changeOnSubmitToEdit = this.changeOnSubmitToEdit.bind(this)
+
   }
 
   handleSubmit(event){
     event.preventDefault();
-
-    // Turn address and projects into array
     this.setState({address:{
       "address1": event.target.address1.value,
       "address2": event.target.address2.value,
@@ -74,9 +76,7 @@ class ClientForm extends Component{
     "forreview": event.target.forreview.value
   }})
 
-  this.props.handleClientPost();
-  this.props.handleClientPut(this.state);
-
+  this.props.handleClientPost(this.state.client);
 }
 
 
@@ -164,20 +164,29 @@ selectAllCheckDetailButtons(){
       })
     }
   })
-  }
+}
 
+changeOnSubmitToEdit(){
+  const submitButton = document.getElementsByName('submit')
+  const submitButtonText = document.getElementsByClassName('update')
+  const formTitle = document.getElementsByClassName('form-title')
+  submitButton[0].onSubmit =  this.props.handleClientPut
+  submitButtonText[0].value= "Update Client"
+  formTitle[0].innerText = "Update Client Details"
+}
 
 
 componentDidMount(){
   if(this.props.mode === "EDIT"){
-  this.selectingClientTitle()
-  this.selectingClientGender()
-  this.selectingClientNationality()
-  this.selectingClientEmployment()
-  this.selectAllRadioProjectButtons()
-  this.selectAllCheckDetailButtons()
-  this.selectAllRadioHearButtons()
- }
+    this.selectingClientTitle()
+    this.selectingClientGender()
+    this.selectingClientNationality()
+    this.selectingClientEmployment()
+    this.selectAllRadioProjectButtons()
+    this.selectAllCheckDetailButtons()
+    this.selectAllRadioHearButtons()
+    this.changeOnSubmitToEdit()
+  }
 }
 
 
@@ -185,10 +194,10 @@ componentDidMount(){
 render(){
   return(
     <Fragment>
-      <form onSubmit={this.handleSubmit}>
+      <form name="submit" onSubmit={this.handleSubmit}>
         <div className="content-block">
           <div className="col-sm-4">
-            <h4>Registration Form</h4>
+            <h4 className = "form-title">Registration Form</h4>
           </div>
           <div className="row">
             <h4>Personal Information</h4>
@@ -408,20 +417,20 @@ render(){
           <label htmlFor="hear" className="col-sm-12 col-form-label">How did you hear about Feniks?</label>
         </div>
         <div className="form-group form-check form-check-inline">
-          <input type="radio" id="hear1" name="1" className="form-check-input hear" value="emito"/>
+          <input type="radio" id="hear1" name="hear" className="form-check-input hear" value="1"/>
           <label className="form-check-label" htmlFor="hear1">Emito</label>
-          <input type="radio" id="hear2" name="2" className="form-check-input hear" value="fenicksWebsite"/>
+          <input type="radio" id="hear2" name="hear" className="form-check-input hear" value="2"/>
           <label className="form-check-label" htmlFor="hear2">Feniks' Website</label>
-          <input type="radio" id="hear3" name="3" className="form-check-input hear" value="family"/>
+          <input type="radio" id="hear3" name="hear" className="form-check-input hear" value="3"/>
           <label className="form-check-label" htmlFor="hear3">Friend / Family Member</label>
         </div>
         <br/>
         <div className="form-group form-check form-check-inline">
-          <input type="radio" id="hear4" name="4" className="form-check-input hear" value="gp"/>
+          <input type="radio" id="hear4" name="hear" className="form-check-input hear" value="4"/>
           <label className="form-check-label" htmlFor="hear4">GP</label>
-          <input type="radio" id="hear5" name="5" className="form-check-input hear" value="leaflet"/>
+          <input type="radio" id="hear5" name="hear" className="form-check-input hear" value="5"/>
           <label className="form-check-label" htmlFor="hear5">Leaflet</label>
-          <input type="radio" id="hear6" name="6" className="form-check-input hear" value="other"/>
+          <input type="radio" id="hear6" name="hear" className="form-check-input hear" value="6"/>
           <label className="form-check-label" htmlFor="hear6">Other</label>
         </div>
       </div>
@@ -438,7 +447,7 @@ render(){
 
       <div className="content-block">
         <div className="form-group">
-          <input type="submit" className="btn btn-lg btn-block btn-success" value="Save New Client"/>
+          <input type="submit" className="btn btn-lg btn-block btn-success update" value="Save New Client"/>
           <input type="reset" className="btn btn-lg btn-block btn-danger" value="Undo Changes"/>
         </div>
       </div>
