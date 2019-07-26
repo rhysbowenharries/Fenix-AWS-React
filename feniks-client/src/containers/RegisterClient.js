@@ -14,8 +14,10 @@ class RegisterClient extends Component {
 
 
     handleClientPost(client){
+        debugger
         const request = new Request();
-        request.post(`${url}`, client).then(() => window.location = "/equality-form")
+        console.log(client)
+        request.post(url, client).then(() => window.location = "/equality")
     }
 
     render(){
