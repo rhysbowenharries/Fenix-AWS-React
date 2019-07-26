@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {url} from '../helper/AwsRoute.js';
 import Request from '../helper/Request.js';
-import NewClient from '../components/forms/ClientForm.js';
+import ClientForm from '../components/forms/ClientForm.js';
 
 
 class RegisterClient extends Component {
@@ -16,11 +16,13 @@ class RegisterClient extends Component {
 
         debugger
         const request = new Request()
-        request.post(url, client).then(() => window.location.pathname = "/equality")
+        request.post(url, client)
+          .then(() => window.location.pathname = "/equality")
+          .catch(console.error);
     }
 
     render(){
-        return <NewClient handleClientPost = {this.handleClientPost} />
+        return <ClientForm handleClientPost = {this.handleClientPost} />
     }
 
 };

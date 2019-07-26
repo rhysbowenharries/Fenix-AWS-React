@@ -30,6 +30,7 @@ class EditClientContainer extends Component{
 
   handleClientPut(client){
     const request = new Request();
+    debugger
     const urlput = "https://ibog5q1ds7.execute-api.eu-west-1.amazonaws.com/Production/clients/" + this.props.id;
     request.patch(urlput, client).then(() => window.location = "/client-list")
   }

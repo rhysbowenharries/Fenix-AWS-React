@@ -1,11 +1,7 @@
 
 class Request {
 
-  // constructor(props){
-  //   super(props)
-  //   this.get = this.get.bind(this)
-  //   this.post = this.post.bind(this)
-  // }
+  constructor(){}
 
   get(url) {
     return fetch(url)

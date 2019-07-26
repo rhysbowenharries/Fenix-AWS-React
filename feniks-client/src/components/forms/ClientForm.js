@@ -98,7 +98,12 @@ class ClientForm extends Component{
     this.handleProject7Change = this.handleProject7Change.bind(this)
     this.handleProject8Change = this.handleProject8Change.bind(this)
     this.handleProject9Change = this.handleProject9Change.bind(this)
+
+
   }
+
+
+
 
 
 
@@ -106,7 +111,7 @@ class ClientForm extends Component{
   // Client Functions
   handleForeNameChange(event){
     const client = this.state.client
-    client.firstname = event.target.value
+    client.forename = event.target.value
     this.setState({client})
   }
 
@@ -220,56 +225,61 @@ class ClientForm extends Component{
 
   // Project Functions
   handleProject1Change(event){
-    const project = this.state.projects
-    project.active50 = event.target.checked
-    this.setState({project})
+    const projects = this.state.projects
+    projects.active50 = event.target.checked
+    this.setState({projects})
   }
   handleProject2Change(event){
-    const project = this.state.projects
-    project.counselling = event.target.checked
-    this.setState({project})
+    const projects = this.state.projects
+    projects.counselling = event.target.checked
+    this.setState({projects})
   }
   handleProject3Change(event){
-    const project = this.state.projects
-    project.grouptherapy = event.target.checked
-    this.setState({project})
+    const projects = this.state.projects
+    projects.grouptherapy = event.target.checked
+    this.setState({projects})
   }
   handleProject4Change(event){
-    const project = this.state.projects
-    project.toddler = event.target.checked
-    this.setState({project})
+    const projects = this.state.projects
+    projects.toddler = event.target.checked
+    this.setState({projects})
   }
   handleProject5Change(event){
-    const project = this.state.projects
-    project.survivors = event.target.checked
-    this.setState({project})
+    const projects = this.state.projects
+    projects.survivors = event.target.checked
+    this.setState({projects})
   }
   handleProject6Change(event){
-    const project = this.state.projects
-    project.personaldevelopment = event.target.checked
-    this.setState({project})
+    const projects = this.state.projects
+    projects.personaldevelopment = event.target.checked
+    this.setState({projects})
   }
   handleProject7Change(event){
-    const project = this.state.projects
-    project.leithcafe = event.target.checked
-    this.setState({project})
+    const projects = this.state.projects
+    projects.leithcafe = event.target.checked
+    this.setState({projects})
   }
   handleProject8Change(event){
-    const project = this.state.projects
-    project.smart = event.target.checked
-    this.setState({project})
+    const projects = this.state.projects
+    projects.smart = event.target.checked
+    this.setState({projects})
   }
   handleProject9Change(event){
-    const project = this.state.projects
-    project.other = event.target.checked
-    this.setState({project})
+    const projects = this.state.projects
+    projects.other = event.target.checked
+    this.setState({projects})
   }
 
 
   handleSubmit(event){
     event.preventDefault();
-    this.props.handleClientPost(this.state);
+    this.props.handleClientPut(this.state);
 }
+
+  handleSubmitUpdate(event){
+    event.preventDefault();
+    this.props.handleClientPut(this.state)
+  }
 
 
 // The Following functions are for the EDIT option
@@ -282,6 +292,10 @@ selectingClientTitle(){
     }
   }
 }
+
+
+
+
 
 
 // For Edit Option
@@ -372,7 +386,7 @@ changeOnSubmitToEdit(){
   const submitButton = document.getElementsByName('submit')
   const submitButtonText = document.getElementsByClassName('update')
   const formTitle = document.getElementsByClassName('form-title')
-  submitButton[0].onSubmit =  this.props.handleClientPut
+  submitButton[0].onSubmit = this.handleSubmitUpdate
   submitButtonText[0].value= "Update Client"
   formTitle[0].innerText = "Update Client Details"
 }
@@ -390,11 +404,7 @@ componentDidMount(){
     this.selectAllCheckDetailButtons()
     this.selectAllRadioHearButtons()
     this.changeOnSubmitToEdit()
-    this.setState({
-      address:this.props.client.address,
-      projects:this.props.client.projects,
-      client:this.props.client})
-    }
+   }
   }
 
 
