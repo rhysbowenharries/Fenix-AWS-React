@@ -58,7 +58,7 @@ class App extends Component {
 
             <Navbar/>
 
-          <div className="content-area mx-5">
+          <div className="head">
 
           {this.state.isAuthenticated
             ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
