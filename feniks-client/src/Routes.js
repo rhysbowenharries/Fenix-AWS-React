@@ -11,28 +11,32 @@ import EditClient from "./containers/EditClient";
 import AppliedRoute from "./components/AppliedRoute";
 import NotFound from "./containers/NotFound";
 import ResetPassword from "./containers/ResetPassword";
-import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 import Signup from "./containers/Signup";
+import AuthenticatedRoute from "./components/AuthenticatedRoute";
+import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
 
 export default ({ childProps }) =>
   <Switch>
-    <Route path="/equality" component={Equalities} />
-    <Route path="/client-list" component={ExistingClients} />
-    <Route path="/assessment-form" component={ClientAssessment} />
-    <Route path="/register-client" component={RegisterClient} />
-    <Route path="/client-profile/:id" render = {(props) => {
-      const id = props.match.params.id;
-      return <DetailedClient id = {id}/>
-    }}/>
-    <Route path="/edit/:id" render = {(props) => {
-      const id = props.match.params.id;
-      return <EditClient id = {id}/>
-    }}/>
+
     <AppliedRoute path="/" exact component={Home} props={childProps} />
-   <AppliedRoute path="/login" exact component={Login} props={childProps} />
-   <AppliedRoute path="/signup" exact component={Signup} props={childProps} />
-   <UnauthenticatedRoute path="/login/reset" exact component={ResetPassword} props={childProps}/>
+
+    <UnauthenticatedRoute path="/login/reset" exact component={ResetPassword} props={childProps}/>
+    <UnauthenticatedRoute path="/login" exact component={Login} props={childProps} />
+    <UnauthenticatedRoute path="/signup" exact component={Signup} props={childProps} />
+    <AuthenticatedRoute path="/equality" component={Equalities} props={childProps}/>
+    <AuthenticatedRoute path="/client-list" component={ExistingClients} props={childProps}/>
+    <AuthenticatedRoute path="/assessment-form" component={ClientAssessment} props={childProps}/>
+    <AuthenticatedRoute path="/register-client" component={RegisterClient} props={childProps}/>
+    <AuthenticatedRoute path="/client-profile/:id" render = {(props) => {
+      const id = props.match.params.id;
+      return <DetailedClient id = {id} props={childProps}/>
+    }}/>
+    <AuthenticatedRoute path="/edit/:id" render = {(props) => {
+      const id = props.match.params.id;
+      return <EditClient id = {id} props={childProps} />
+    }}/>
+
 
    { /* Finally, catch all unmatched routes */ }
    <Route component={NotFound} />
