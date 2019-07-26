@@ -7,7 +7,7 @@ import 'bootstrap';
 import './css/feniks_style.css';
 import 'popper.js/dist/popper.js';
 import Login from "./containers/Login";
-
+import { Auth } from "aws-amplify";
 
 
 // import { Nav, Navbar,} from "react-bootstrap";
@@ -34,13 +34,35 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isAuthenticated: false
+      isAuthenticated: false,
+      isAuthenticating: true
     };
+  }
+
+  async componentDidMount() {
+    try {
+      await Auth.currentSession();
+      this.userHasAuthenticated(true);
+    }
+    catch(e) {
+      if (e !== 'No current user') {
+        alert(e);
+      }
+    }
+
+    this.setState({ isAuthenticating: false });
   }
 
   userHasAuthenticated = authenticated => {
     this.setState({ isAuthenticated: authenticated });
   }
+  
+  handleLogout = async event => {
+  await Auth.signOut();
+
+  this.userHasAuthenticated(false);
+}
+
 
   render() {
     const childProps = {
@@ -49,16 +71,16 @@ class App extends Component {
     };
 
     return (
+      !this.state.isAuthenticating &&
+    <div className="App container">
 
 
 
-        <Router>
 
-          <Fragment>
 
             <Navbar/>
 
-          <div className="head">
+
 
           {this.state.isAuthenticated
             ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
@@ -87,8 +109,7 @@ class App extends Component {
             <Routes childProps={childProps}/>
           </div>
 
-        </Fragment>
-      </Router>
+
 
   );
 }
