@@ -7,17 +7,16 @@ import NewClient from '../components/forms/ClientForm.js';
 class RegisterClient extends Component {
     constructor(props){
         super(props)
-
         this.handleClientPost = this.handleClientPost.bind(this);
     }
 
 
 
     handleClientPost(client){
+
         debugger
-        const request = new Request();
-        console.log(client)
-        request.post(url, client).then(() => window.location = "/equality")
+        const request = new Request()
+        request.post(url, client).then(() => window.location.pathname = "/equality")
     }
 
     render(){

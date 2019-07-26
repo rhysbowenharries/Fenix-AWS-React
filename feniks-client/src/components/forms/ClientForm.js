@@ -3,10 +3,17 @@ import React,{Fragment, Component} from 'react';
 
 class ClientForm extends Component{
 
+
   constructor(props){
     super(props);
+    if(props.mode != 'EDIT'){
     this.state = {
-      address:{ },
+      address:{
+        'address1':'',
+        'address2':'',
+        'address3':'',
+        'address4':''
+      },
       projects:{
         "active50":false,
         "counselling":false,
@@ -18,8 +25,33 @@ class ClientForm extends Component{
         "smart":false,
         "other":false
       },
-      client: { }
+      client: {
+
+        "title":'',
+        "surname":'',
+        "forename":'',
+        "dob":'',
+        "gender":'',
+        "nationality":'',
+        "gp":'',
+        "address":'',
+        "phone":'',
+        "email":'',
+        "employment":'',
+        "leavemessage":false,
+        "fromfeniks":false,
+        "mailing":false,
+        "projects":"",
+        "hear":null,
+        "forreview":''
+    }}
+  }else{
+    this.state = {
+      address: this.props.address,
+      projects: this.props.projects,
+      client:this.props.client,
     }
+  }
 
 
     // For Edit Option
@@ -32,6 +64,8 @@ class ClientForm extends Component{
     this.selectAllCheckDetailButtons = this.selectAllCheckDetailButtons.bind(this)
     this.selectAllRadioHearButtons = this.selectAllRadioHearButtons.bind(this)
 
+
+    // Functions for the Client information
     this.changeOnSubmitToEdit = this.changeOnSubmitToEdit.bind(this)
     this.handleForeNameChange = this.handleForeNameChange.bind(this)
     this.handleSurnameChange = this.handleSurnameChange.bind(this)
@@ -47,13 +81,14 @@ class ClientForm extends Component{
     this.handleLeavemessageChange = this.handleLeavemessageChange.bind(this)
     this.handleFromFenicksChange = this.handleFromFenicksChange.bind(this)
 
-
+    // Fucntions for all the address elements
     this.handleAddress1Change = this.handleAddress1Change.bind(this)
     this.handleAddress2Change = this.handleAddress2Change.bind(this)
     this.handleAddress3Change = this.handleAddress3Change.bind(this)
     this.handleAddress4Change = this.handleAddress4Change.bind(this)
 
 
+    // Functions for all the project elemeents
     this.handleProject1Change = this.handleProject1Change.bind(this)
     this.handleProject2Change = this.handleProject2Change.bind(this)
     this.handleProject3Change = this.handleProject3Change.bind(this)
@@ -68,6 +103,7 @@ class ClientForm extends Component{
 
 
 
+  // Client Functions
   handleForeNameChange(event){
     const client = this.state.client
     client.firstname = event.target.value
@@ -155,7 +191,7 @@ class ClientForm extends Component{
 
 
 
-
+  // Address Functions
   handleAddress1Change(event){
     const address = this.state.address
     address.address1 = event.target.value
@@ -182,7 +218,7 @@ class ClientForm extends Component{
 
 
 
-
+  // Project Functions
   handleProject1Change(event){
     const project = this.state.projects
     project.active50 = event.target.checked
@@ -230,75 +266,9 @@ class ClientForm extends Component{
   }
 
 
-
-
-
-
-
-
-
-
-
-
   handleSubmit(event){
     event.preventDefault();
-    //   this.setState({address:{
-    //     "address1": event.target.address1.value,
-    //     "address2": event.target.address2.value,
-    //     "address3": event.target.address3.value,
-    //     "address4": event.target.address4.value
-    //   }
-    // });
-    //
-    // this.setState({ projects:{
-    //   "active50":event.target.project1.checked,
-    //   "counselling":event.target.project2.checked,
-    //   "grouptherapy":event.target.project3.checked,
-    //   "toddler":event.target.project4.checked,
-    //   "survivors":event.target.project5.checked,
-    //   "personaldevelopment":event.target.project6.checked,
-    //   "leithcafe":event.target.project7.checked,
-    //   "smart":event.target.project8.checked,
-    //   "other":event.target.project9.checked
-    // }})
-
-    this.setState({address:{
-      "address1": event.target.address1.value,
-      "address2": event.target.address2.value,
-      "address3": event.target.address3.value,
-      "address4": event.target.address4.value
-    }
-  },
-  { projects:{
-    "active50":event.target.project1.checked,
-    "counselling":event.target.project2.checked,
-    "grouptherapy":event.target.project3.checked,
-    "toddler":event.target.project4.checked,
-    "survivors":event.target.project5.checked,
-    "personaldevelopment":event.target.project6.checked,
-    "leithcafe":event.target.project7.checked,
-    "smart":event.target.project8.checked,
-    "other":event.target.project9.checked
-  }},
-  {client: {
-    "title":event.target.title.value,
-    "surname":event.target.surname.value,
-    "forename":event.target.forename.value,
-    "dob":event.target.dob.value,
-    "gender":event.target.gender.value,
-    "nationality":event.target.nationality.value,
-    "gp":event.target.gp.value,
-    "address": this.state.address,
-    "phone":event.target.phone.value,
-    "email":event.target.email.value,
-    "employment":event.target.employment.value,
-    "leavemessage":event.target.leavemessage.checked,
-    "fromfeniks":event.target.fromfeniks.checked,
-    "mailing":event.target.mailing.checked,
-    "projects":this.state.projects,
-    "hear": event.target.hear.value,
-    "forreview": event.target.forreview.value
-  }}, this.props.handleClientPost(this.state));
+    this.props.handleClientPost(this.state);
 }
 
 
@@ -367,9 +337,10 @@ selectAllRadioProjectButtons(){
 // For Edit Option
 selectAllRadioHearButtons(){
   let clientsProjectOptions = this.props.client.hear
+  console.log(this.props.client.hear);
   const allRadioHearOptions = document.getElementsByClassName('hear')
   for(let i = 0; i < allRadioHearOptions.length; i++){
-    if(clientsProjectOptions === allRadioHearOptions[i].name){
+    if(clientsProjectOptions === allRadioHearOptions[i].value){
       allRadioHearOptions[i].checked = true
     }
   }
@@ -427,54 +398,6 @@ componentDidMount(){
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   render(){
     return(
       <Fragment>
@@ -523,18 +446,6 @@ componentDidMount(){
               </div>
             </div>
 
-            {/* <div className="form-group form-check form-check-inline">
-            <label htmlFor="gender" className="col-sm-2 col-form-label">Gender</label>
-            <br></br>
-            <input type="radio" id="gender1" name="gender" className="form-check-input" value="Female"/>
-            <label className="form-check-label" htmlFor="gender1">Female</label>
-            <input type="radio" id="gender2" name="gender" className="form-check-input" value="Male"/>
-            <label className="form-check-label" htmlFor="gender2">Male</label>
-            <input type="radio" id="gender3" name="gender" className="form-check-input" value="Other"/>
-            <label className="form-check-label" htmlFor="gender3">Other</label>
-            <input type="radio" id="gender4" name="gender" className="form-check-input" value="I do not wish to disclose this"/>
-            <label className="form-check-label" htmlFor="gender4">I do not wish to disclose this</label>
-          </div> */}
 
           <div className="form-group row">
             <label htmlFor="gender" className="col-sm-2 col-form-label">Gender</label>
@@ -583,26 +494,26 @@ componentDidMount(){
           <div className="form-group row">
             <label htmlFor="address1" className="col-sm-2 col-form-label">Address Line 1</label>
             <div className="col-sm-9">
-              <input type="text" id="address1" name="address1" className="form-control"  placeholder="House name / number" value = {this.state.address.address1} onChange = {this.handleAddress1Change}/>
+              <input type="text" id="address1" name="address1" className="form-control"  placeholder="House name / number" value = {this.state.client.address.address1} onChange = {this.handleAddress1Change}/>
             </div>
           </div>
 
           <div className="form-group row">
             <label htmlFor="address2" className="col-sm-2 col-form-label">Address Line 2</label>
             <div className="col-sm-9">
-              <input type="text" id="address2" name="address2" className="form-control"  placeholder="Street"  value = {this.state.address.address2} onChange = {this.handleAddress2Change}/>
+              <input type="text" id="address2" name="address2" className="form-control"  placeholder="Street"  value = {this.state.client.address.address2} onChange = {this.handleAddress2Change}/>
             </div>
           </div>
           <div className="form-group row">
             <label htmlFor="address3" className="col-sm-2 col-form-label">Address Line 3</label>
             <div className="col-sm-9">
-              <input type="text" id="address3" name="address3" className="form-control" placeholder="Town" value = {this.state.address.address3} onChange = {this.handleAddress3Change}/>
+              <input type="text" id="address3" name="address3" className="form-control" placeholder="Town" value = {this.state.client.address.address3} onChange = {this.handleAddress3Change}/>
             </div>
           </div>
           <div className="form-group row">
             <label htmlFor="address4" className="col-sm-2 col-form-label">Address Line 4</label>
             <div className="col-sm-9">
-              <input type="text" id="address4" name="address4" className="form-control" placeholder="Postcode"  value = {this.state.address.address4} onChange = {this.handleAddress4Change}/>
+              <input type="text" id="address4" name="address4" className="form-control" placeholder="Postcode"  value = {this.state.client.address.address4} onChange = {this.handleAddress4Change}/>
             </div>
           </div>
           <div className="form-group row">
