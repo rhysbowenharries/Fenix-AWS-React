@@ -4,7 +4,11 @@
   justify-content: space-around;
   background-color: white;
   padding: 3%;
-  border: solid black 2px;
+  border-radius: 5px;
+  -webkit-box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+  -moz-box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+  box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+
 }
 
 .appointment-button{
@@ -18,10 +22,11 @@
 }
 
 .appointmentHeader{
-  background-color: grey;
+  background-color: white;
   display: flex;
-  height: 50px;
+  height: auto;
   justify-content: space-between;
+
 }
 
 .new-appointment-container{
@@ -31,9 +36,10 @@
   display: flex;
   margin-top: 1%;
   padding: 5% 10%;
-  border:solid black 2px;
-  background-color: grey;
+  border-radius: 5px;
+  background-color: white;
   justify-content: space-between;
+
 }
 
 
@@ -55,8 +61,13 @@
   margin-top: 1%;
   padding: 1% 0%;
   display: inline-flex;
-  border: solid 2px black;
+  border-radius: 5px;
   justify-content: space-around;
+  background-color: white;
+  -webkit-box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+  -moz-box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+  box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+
 
 }
 
@@ -67,8 +78,9 @@
 .display-flex-spaceB{
   display: inline-flex;
   justify-content: space-around;
-  border:solid black 2px;
+  border-radius: 5px;
   width:100%;
+
 }
 
 .flex select{
@@ -82,5 +94,5 @@ label{
 }
 
 input, label, select {
-    display:block;
+  display:block;
 }
