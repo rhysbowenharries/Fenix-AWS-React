@@ -28,13 +28,13 @@ export default ({ childProps }) =>
     <AuthenticatedRoute path="/client-list" component={ExistingClients} props={childProps}/>
     <AuthenticatedRoute path="/assessment-form" component={ClientAssessment} props={childProps}/>
     <AuthenticatedRoute path="/register-client" component={RegisterClient} props={childProps}/>
-    <AuthenticatedRoute path="/client-profile/:id" render = {(props) => {
-      const id = childProps.match.params.id;
-      return <DetailedClient id = {id} props={childProps}/>
+    <AuthenticatedRoute path="/client-profile/:id" component={DetailedClient} props={childProps} render = {(props) => {
+      const id = props.match.params.id;
+      return <DetailedClient id = {id} />
     }}/>
-    <AuthenticatedRoute path="/edit/:id" render = {(props) => {
-      const id = childProps.match.params.id;
-      return <EditClient id = {id} props={childProps} />
+    <AuthenticatedRoute path="/edit/:id" component={EditClient} props={childProps} render = {(props) => {
+      const id = props.match.params.id;
+      return <EditClient id = {id}/>
     }}/>
 
 

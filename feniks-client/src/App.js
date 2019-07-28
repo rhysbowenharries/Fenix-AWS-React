@@ -93,21 +93,8 @@ class App extends Component {
                 <LinkContainer to="/login">
                   <NavItem>Login</NavItem>
                 </LinkContainer>
-                <LinkContainer to="/equality">
-                  <NavItem>Equalities</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/client-list">
-                  <NavItem>Clients</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/assessment-form">
-                  <NavItem>Assessment form</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/register-client">
-                  <NavItem>New Client</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/client-profile/:id">
-                  <NavItem>TEST</NavItem>
-                </LinkContainer>
+              
+
               </Fragment>
           }
 
