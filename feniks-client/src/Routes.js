@@ -17,8 +17,8 @@ import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
 
 export default ({ childProps }) =>
-  <Switch>
 
+  <Switch>
     <AppliedRoute path="/" exact component={Home} props={childProps} />
 
     <UnauthenticatedRoute path="/login/reset" exact component={ResetPassword} props={childProps}/>
@@ -29,11 +29,11 @@ export default ({ childProps }) =>
     <AuthenticatedRoute path="/assessment-form" component={ClientAssessment} props={childProps}/>
     <AuthenticatedRoute path="/register-client" component={RegisterClient} props={childProps}/>
     <AuthenticatedRoute path="/client-profile/:id" render = {(props) => {
-      const id = props.match.params.id;
+      const id = childProps.match.params.id;
       return <DetailedClient id = {id} props={childProps}/>
     }}/>
     <AuthenticatedRoute path="/edit/:id" render = {(props) => {
-      const id = props.match.params.id;
+      const id = childProps.match.params.id;
       return <EditClient id = {id} props={childProps} />
     }}/>
 

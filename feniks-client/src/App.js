@@ -1,7 +1,7 @@
 import React, { Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom';
 import Routes from "./Routes";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { Nav, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import 'bootstrap';
 import './css/feniks_style.css';
@@ -15,7 +15,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-// import Navbar from './components/navbar/Navbar.js'
+import Navbar from './components/navbar/Navbar.js'
 
 // Containers
 import Home from './containers/Home.js';
@@ -104,6 +104,9 @@ class App extends Component {
                 </LinkContainer>
                 <LinkContainer to="/register-client">
                   <NavItem>New Client</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/client-profile/:id">
+                  <NavItem>TEST</NavItem>
                 </LinkContainer>
               </Fragment>
           }
