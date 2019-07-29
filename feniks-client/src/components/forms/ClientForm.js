@@ -1,4 +1,5 @@
 import React,{Fragment, Component} from 'react';
+import "./ClientForm.css"
 
 
 class ClientForm extends Component{
@@ -411,18 +412,18 @@ componentDidMount(){
   render(){
     return(
       <Fragment>
-        <form name="submit" onSubmit={this.handleSubmit}>
+        <form name="submit" className = "form-body" onSubmit={this.handleSubmit}>
           <div className="content-block">
-            <div className="col-sm-4">
+            {/* <div className="col-sm-4">
               <h4 className = "form-title">Registration Form</h4>
-            </div>
-            <div className="row">
-              <h4>Personal Information</h4>
+            </div> */}
+            <div className="row section-header">
+              <h2>Personal Information</h2>
             </div>
 
 
             <div className="form-group row">
-              <label htmlFor="title" className="col-sm-2 col-form-label">Title</label>
+              <label htmlFor="title" className="col-sm-2 col-form-label">Title:</label>
               <div className="col-sm-9">
                 <select id="title" name="title" className="form-control" onChange = {this.handleTitleChange} >
                   <option>Select...</option>
@@ -436,21 +437,21 @@ componentDidMount(){
             </div>
 
             <div className="form-group row">
-              <label htmlFor="surname" className="col-sm-2 col-form-label">Surname(s)</label>
+              <label htmlFor="surname" className="col-sm-2 col-form-label">Surname(s):</label>
               <div className="col-sm-9">
                 <input type="text" id="surname" name="surname" className="form-control"  placeholder="Surname(s)" value = {this.state.client.surname} onChange = {this.handleSurnameChange} />
               </div>
             </div>
 
             <div className="form-group row">
-              <label htmlFor="forename" className="col-sm-2 col-form-label">Forename(s)</label>
+              <label htmlFor="forename" className="col-sm-2 col-form-label">Forename(s):</label>
               <div className="col-sm-9">
                 <input type="text" id="forename" name="forename" className="form-control"  placeholder="Forename(s)" value = {this.state.client.forename} onChange = {this.handleForeNameChange}/>
               </div>
             </div>
 
             <div className="form-group row">
-              <label htmlFor="dob" className="col-sm-2 col-form-label">Date of Birth</label>
+              <label htmlFor="dob" className="col-sm-2 col-form-label">Date of Birth:</label>
               <div className="col-sm-9">
                 <input type="date" id="dob" name="dob" className="form-control"  placeholder="" value = {this.state.client.dob} onChange = {this.handleDobChange}/>
               </div>
@@ -458,7 +459,7 @@ componentDidMount(){
 
 
           <div className="form-group row">
-            <label htmlFor="gender" className="col-sm-2 col-form-label">Gender</label>
+            <label htmlFor="gender" className="col-sm-2 col-form-label">Gender:</label>
             <div className="col-sm-9">
               <select id="gender" name="gender" className="form-control" onChange = {this.handleGenderChange} >
                 <option>Select...</option>
@@ -471,7 +472,7 @@ componentDidMount(){
           </div>
 
           <div className="form-group row">
-            <label htmlFor="nationality" className="col-sm-2 col-form-label">Nationality</label>
+            <label htmlFor="nationality" className="col-sm-2 col-form-label">Nationality:</label>
             <div className="col-sm-9">
               <select id="nationality" name="nationality" className="form-control" onChange = {this.handleNationalityChange}>
                 <option>Select...</option>
@@ -489,58 +490,62 @@ componentDidMount(){
           </div>
 
           <div className="form-group row">
-            <label htmlFor="gp" className="col-sm-2 col-form-label" >GP Name and Practice</label>
+            <label htmlFor="gp" className="col-sm-2 col-form-label" >GP Name and Practice:</label>
             <div className="col-sm-9">
               <input type="text" id="gp" name="gp" className="form-control"   placeholder="GP Name and Practice" value = {this.state.client.gp} onChange = {this.handleGpChange}/>
             </div>
           </div>
         </div>
 
+        <br/>
+
+
         <div className="content-block">
-          <div className="row">
-            <h4>Details</h4>
+          <div className="row section-header">
+            <h2>Contact Details</h2>
           </div>
 
+
           <div className="form-group row">
-            <label htmlFor="address1" className="col-sm-2 col-form-label">Address Line 1</label>
+            <label htmlFor="address1" className="col-sm-2 col-form-label">Address Line 1:</label>
             <div className="col-sm-9">
               <input type="text" id="address1" name="address1" className="form-control"  placeholder="House name / number" value = {this.state.client.address.address1} onChange = {this.handleAddress1Change}/>
             </div>
           </div>
 
           <div className="form-group row">
-            <label htmlFor="address2" className="col-sm-2 col-form-label">Address Line 2</label>
+            <label htmlFor="address2" className="col-sm-2 col-form-label">Address Line 2:</label>
             <div className="col-sm-9">
               <input type="text" id="address2" name="address2" className="form-control"  placeholder="Street"  value = {this.state.client.address.address2} onChange = {this.handleAddress2Change}/>
             </div>
           </div>
           <div className="form-group row">
-            <label htmlFor="address3" className="col-sm-2 col-form-label">Address Line 3</label>
+            <label htmlFor="address3" className="col-sm-2 col-form-label">Address Line 3:</label>
             <div className="col-sm-9">
               <input type="text" id="address3" name="address3" className="form-control" placeholder="Town" value = {this.state.client.address.address3} onChange = {this.handleAddress3Change}/>
             </div>
           </div>
           <div className="form-group row">
-            <label htmlFor="address4" className="col-sm-2 col-form-label">Address Line 4</label>
+            <label htmlFor="address4" className="col-sm-2 col-form-label">Address Line 4:</label>
             <div className="col-sm-9">
               <input type="text" id="address4" name="address4" className="form-control" placeholder="Postcode"  value = {this.state.client.address.address4} onChange = {this.handleAddress4Change}/>
             </div>
           </div>
           <div className="form-group row">
-            <label htmlFor="phone" className="col-sm-2 col-form-label">Phone Number</label>
+            <label htmlFor="phone" className="col-sm-2 col-form-label">Phone Number:</label>
             <div className="col-sm-9">
               <input type="number" id="phone" name="phone" className="form-control"  placeholder="Phone Number" value = {this.state.client.phone} onChange={this.handlePhoneChange}/>
             </div>
           </div>
           <div className="form-group row">
-            <label htmlFor="email" className="col-sm-2 col-form-label">Email</label>
+            <label htmlFor="email" className="col-sm-2 col-form-label">Email:</label>
             <div className="col-sm-9">
               <input type="text" id="email" name="email" className="form-control"  placeholder="Email Address" value = {this.state.client.email}  onChange={this.handleEmailChange}/>
             </div>
           </div>
 
           <div className="form-group row">
-            <label htmlFor="employment" className="col-sm-2 col-form-label">Employment Status</label>
+            <label htmlFor="employment" className="col-sm-2 col-form-label">Employment Status:</label>
             <div className="col-sm-9">
               <select id="employment" name="employment" className="form-control"  onChange = {this.handleEmploymentChange}>
                 <option>Select...</option>
@@ -553,6 +558,10 @@ componentDidMount(){
               </select>
             </div>
           </div>
+          <br/>
+          <br/>
+          <h4>Can we contact?</h4>
+          <br/>
 
           <div className="form-group">
             <div className="form-check">
@@ -572,75 +581,119 @@ componentDidMount(){
           </div>
         </div>
 
+        <br/>
+
+
         <div className="content-block">
-          <div className="row">
-            <h4>Projects</h4>
+          <div className="row section-header">
+            <h2>Projects</h2>
           </div>
 
           <div className="form-group row">
-            <label htmlFor="projects" className="col-sm-12 col-form-label">Which Project(s) would you like to attend? Please tick all relevant boxes.</label>
+            <label htmlFor="projects" className="col-sm-12 col-form-label question">Which Project(s) would you like to attend? Please tick all relevant boxes.</label>
           </div>
 
           <div className="form-group form-check form-check-inline">
+            <div className="checkbox">
             <input type="checkbox" id="project1" name="active50" className="form-check-input project" onChange = {this.handleProject1Change}/>
             <label className="form-check-label" htmlFor="project1" value="1">Active 50+</label>
+            </div>
+            <div className="checkbox">
             <input type="checkbox" id="project2" name="counselling" className="form-check-input project" onChange = {this.handleProject2Change}/>
             <label className="form-check-label " htmlFor="project2" value="1">Counselling / Therapy</label>
+            </div>
+            <div className="checkbox">
             <input type="checkbox" id="project3" name="grouptherapy" className="form-check-input project" onChange = {this.handleProject3Change}/>
             <label className="form-check-label " htmlFor="project3" value="1">Group Therapy</label>
+            </div>
           </div>
 
-          <br/>
+
 
           <div className="form-group form-check form-check-inline">
+            <div className="checkbox">
             <input type="checkbox" id="project4" name="toddler" className="form-check-input project" onChange = {this.handleProject4Change}/>
             <label className="form-check-label " htmlFor="project4" value="1">Toddler Group</label>
+            </div>
+            <div className="checkbox">
             <input type="checkbox" id="project5" name="survivors" className="form-check-input project" onChange = {this.handleProject5Change}/>
             <label className="form-check-label " htmlFor="project5" value="1">Survivors' Group</label>
+            </div>
+            <div className="checkbox">
             <input type="checkbox" id="project6" name="personaldevelopment" className="form-check-input project" onChange = {this.handleProject6Change}/>
             <label className="form-check-label " htmlFor="project6" value="1">Personal Development Workshops</label>
+            </div>
           </div>
 
-          <br/>
+
 
           <div className="form-group form-check form-check-inline">
+            <div className="checkbox">
             <input type="checkbox" id="project7" name="leithcafes" className="form-check-input" onChange = {this.handleProject7Change}/>
             <label className="form-check-label" htmlFor="project7" value="1">Leith Conversation Cafes</label>
+            </div>
+            <div className="checkbox">
             <input type="checkbox" id="project8" name="smart" className="form-check-input" onChange = {this.handleProject8Change}/>
             <label className="form-check-label" htmlFor="project8" value="1">SMART Recovery</label>
+            </div>
+            <div className="checkbox">
             <input type="checkbox" id="project9" name="other" className="form-check-input" onChange = {this.handleProject9Change}/>
             <label className="form-check-label" htmlFor="project9" value="1">Other</label>
+            </div>
           </div>
 
         </div>
 
+        <br/>
+
+
+
         <div className="content-block">
-          <div className="row">
-            <h4>Feniks</h4>
+          <div className="row section-header">
+            <h2>Feniks</h2>
           </div>
           <div className="form-group row">
-            <label htmlFor="hear" className="col-sm-12 col-form-label">How did you hear about Feniks?</label>
+            <label htmlFor="hear" className="col-sm-12 col-form-label question">How did you hear about Feniks?</label>
           </div>
           <div className="form-group form-check form-check-inline">
+            <div className="checkbox">
             <input type="radio" id="hear1" name="hear" className="form-check-input hear" value="1"/>
             <label className="form-check-label" htmlFor="hear1">Emito</label>
+            </div>
+            <div className="checkbox">
             <input type="radio" id="hear2" name="hear" className="form-check-input hear" value="2"/>
             <label className="form-check-label" htmlFor="hear2">Feniks' Website</label>
+            </div>
+            <div className="checkbox">
             <input type="radio" id="hear3" name="hear" className="form-check-input hear" value="3"/>
             <label className="form-check-label" htmlFor="hear3">Friend / Family Member</label>
+            </div>
           </div>
-          <br/>
+
           <div className="form-group form-check form-check-inline">
+            <div className="checkbox">
             <input type="radio" id="hear4" name="hear" className="form-check-input hear" value="4"/>
             <label className="form-check-label" htmlFor="hear4">GP</label>
+            </div>
+            <div className="checkbox">
             <input type="radio" id="hear5" name="hear" className="form-check-input hear" value="5"/>
             <label className="form-check-label" htmlFor="hear5">Leaflet</label>
+            </div>
+            <div className="checkbox">
             <input type="radio" id="hear6" name="hear" className="form-check-input hear" value="6"/>
             <label className="form-check-label" htmlFor="hear6">Other</label>
+            </div>
           </div>
         </div>
 
+        <br/>
+
+
+
         <div className="content-block">
+          <div className="row section-header">
+            <h2>Personal Information</h2>
+          </div>
           <div className="form-group row">
             <label htmlFor="forreview" className="col-sm-2 col-form-label">Items for Review</label>
             <div className="col-sm-9">
@@ -650,9 +703,11 @@ componentDidMount(){
         </div>
 
 
-        <div className="content-block">
-          <div className="form-group">
+        <div className="button-container">
+          <div className="form-group button">
             <input type="submit" className="btn btn-lg btn-block btn-success update" value="Save New Client"/>
+          </div>
+          <div className="form-group button">
             <input type="reset" className="btn btn-lg btn-block btn-danger" value="Undo Changes"/>
           </div>
         </div>

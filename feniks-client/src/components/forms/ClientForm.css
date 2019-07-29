@@ -1,0 +1,61 @@
+.form-body{
+  padding: 0% 10%;
+}
+
+.break-type-1{
+  height: 100px;
+}
+
+.content-block{
+  padding:5% !important;
+}
+
+.section-header{
+  padding: 0% 0% 2% 1%;
+  font-weight: 700;
+  color:#014ea0;
+  font-family:Karla;
+}
+
+.form-check{
+  display:flex !important;
+  justify-content: space-between !important;
+}
+
+.checkbox{
+  display: inline-flex;
+  width:100%;
+}
+
+label{
+  font-weight: 100 !important;
+  font-size: 18px;
+  padding-bottom: 2%;
+}
+
+input checkbox:checked{
+  color: #014ea0 !important;
+  text-align: center;
+
+}
+
+input checkbox{
+  transform: scale(1.5) !important;
+}
+
+
+
+.question{
+  font-size: 21px !important;
+  font-weight: 400 !important;
+  padding-bottom: 3% !important;
+}
+
+.button-container{
+  display: inline-flex;
+  float: right;
+}
+
+.button{
+  margin-right: 4%;
+}
