@@ -93,7 +93,7 @@ class App extends Component {
                 <LinkContainer to="/login">
                   <NavItem>Login</NavItem>
                 </LinkContainer>
-              
+
 
               </Fragment>
           }
