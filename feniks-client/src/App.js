@@ -16,7 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-import Navbar from './components/navbar/Navbar.js'
+// import Navbar from './components/navbar/Navbar.js'
 
 // Containers
 import Home from './containers/Home.js';
@@ -79,29 +79,47 @@ class App extends Component {
 
 
 
-
-
-            <Navbar/>
+       
+            <LinkContainer to="/">
+                  <NavItem>Feniks</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/register-client">
+                  <NavItem>New Client</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/client-list">
+                  <NavItem>Clients</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/equality">
+                  <NavItem>Equality</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/assessment-form">
+                  <NavItem>Assement Form</NavItem>
+                </LinkContainer>
+           
 
 
 
           {this.state.isAuthenticated
             ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
             : <Fragment>
+             
                 <LinkContainer to="/signup">
                   <NavItem>Signup</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/login">
                   <NavItem>Login</NavItem>
                 </LinkContainer>
-              
-
               </Fragment>
           }
 
             <Routes childProps={childProps}/>
+
           </div>
 
+
+          
+      
+    
 
 
   );
