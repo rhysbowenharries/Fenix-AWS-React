@@ -7,7 +7,7 @@ const Navbar  = (props) => {
 
   return (
 
-    <nav className="nav navbar-expand-lg navbar-dark bg-dark mb-3 mx-0 px-3">
+    <nav className="navbar">
       <Link to="/" className="navbar-brand logo-text">Feniks</Link>
       <ul className="navbar-nav">
         <li className="nav-item">

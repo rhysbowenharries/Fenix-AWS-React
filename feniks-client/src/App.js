@@ -5,6 +5,7 @@ import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import 'bootstrap';
 import './css/feniks_style.css';
+import '../src/App.css'
 import 'popper.js/dist/popper.js';
 import Login from "./containers/Login";
 
