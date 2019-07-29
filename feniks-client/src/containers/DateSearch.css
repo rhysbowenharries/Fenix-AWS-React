@@ -1,0 +1,98 @@
+.date-container{
+  display: inline-flex;
+  margin-top: 1%;
+  justify-content: space-around;
+  background-color: white;
+  padding: 3%;
+  border-radius: 5px;
+  -webkit-box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+  -moz-box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+  box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+
+}
+
+.appointment-button{
+  background-color:#05bffe;
+  padding: 0% 2%;
+  width:auto;
+  color:white;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+}
+
+.appointmentHeader{
+  background-color: white;
+  display: flex;
+  height: auto;
+  justify-content: space-between;
+
+}
+
+.new-appointment-container{
+
+  height: 300px;
+  width:100%;
+  display: flex;
+  margin-top: 1%;
+  padding: 5% 10%;
+  border-radius: 5px;
+  background-color: white;
+  justify-content: space-between;
+
+}
+
+
+.appointment-button-save{
+  color:white;
+  float: right;
+  border: none;
+  padding: 1.5% 3%;
+  margin-top: 5%;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color:#05bffe;
+}
+
+.client-app-profile{
+
+  width:100%;
+  margin-top: 1%;
+  padding: 1% 0%;
+  display: inline-flex;
+  border-radius: 5px;
+  justify-content: space-around;
+  background-color: white;
+  -webkit-box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+  -moz-box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+  box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+
+
+}
+
+.visibility{
+  display: none;
+}
+
+.display-flex-spaceB{
+  display: inline-flex;
+  justify-content: space-around;
+  border-radius: 5px;
+  width:100%;
+
+}
+
+.flex select{
+  width:300px;
+  outline: none;
+}
+
+label{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+input, label, select {
+  display:block;
+}

@@ -70,7 +70,8 @@ class App extends Component {
     const childProps = {
       isAuthenticated: this.state.isAuthenticated,
       userHasAuthenticated: this.userHasAuthenticated
-    };
+    }
+    console.log(childProps);
 
     return (
       !this.state.isAuthenticating &&
@@ -93,7 +94,7 @@ class App extends Component {
                 <LinkContainer to="/login">
                   <NavItem>Login</NavItem>
                 </LinkContainer>
-              
+
 
               </Fragment>
           }

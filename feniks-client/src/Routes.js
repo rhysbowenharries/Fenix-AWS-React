@@ -30,7 +30,8 @@ export default ({ childProps }) =>
     <AuthenticatedRoute path="/register-client" component={RegisterClient} props={childProps}/>
     <AuthenticatedRoute path="/client-profile/:id" component={DetailedClient} props={childProps} render = {(props) => {
       const id = props.match.params.id;
-      return <DetailedClient id = {id} />
+      return <DetailedClient id = {id}
+      />
     }}/>
     <AuthenticatedRoute path="/edit/:id" component={EditClient} props={childProps} render = {(props) => {
       const id = props.match.params.id;
