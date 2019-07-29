@@ -18,10 +18,10 @@ const Navbar  = (props) => {
         </li>
 
         <li className= "nav-item">
-          <Link to="/signup" className="nav-link">Signup</Link>
+          <Link to="/equality" className="nav-link">Equality</Link>
         </li>
         <li className="nav-item">
-          <Link to="/login" className="nav-link">Login</Link>
+          <Link to="/assessment-form" className="nav-link">Assement Form</Link>
         </li>
       </ul>
     </nav>
