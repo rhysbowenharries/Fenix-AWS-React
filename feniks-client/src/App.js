@@ -1,5 +1,5 @@
-import React, { Component, Fragment} from 'react';
-import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
 import Routes from "./Routes";
 import { Nav, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
@@ -16,7 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-// import Navbar from './components/navbar/Navbar.js'
+import Navbar from './components/navbar/Navbar.js'
 
 // Containers
 import Home from './containers/Home.js';
@@ -26,6 +26,7 @@ import ExistingClients from './containers/ExistingClients';
 import RegisterClient from './containers/RegisterClient';
 import ClientAssessment from './containers/ClientAssessment';
 import DetailedClient from './containers/DetailedClient';
+import { navBar } from '@aws-amplify/ui';
 
 
 
@@ -45,7 +46,7 @@ class App extends Component {
       await Auth.currentSession();
       this.userHasAuthenticated(true);
     }
-    catch(e) {
+    catch (e) {
       if (e !== 'No current user') {
         alert(e);
       }
@@ -75,54 +76,60 @@ class App extends Component {
 
     return (
       !this.state.isAuthenticating &&
-    <div className="App container">
 
-
-
-       
-            <LinkContainer to="/">
-                  <NavItem>Feniks</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/register-client">
-                  <NavItem>New Client</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/client-list">
-                  <NavItem>Clients</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/equality">
-                  <NavItem>Equality</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/assessment-form">
-                  <NavItem>Assement Form</NavItem>
-                </LinkContainer>
-           
-
-
-
-          {this.state.isAuthenticated
-            ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
-            : <Fragment>
-             
-                <LinkContainer to="/signup">
-                  <NavItem>Signup</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/login">
-                  <NavItem>Login</NavItem>
-                </LinkContainer>
-              </Fragment>
-          }
-
-            <Routes childProps={childProps}/>
-
-          </div>
-
-
-          
       
-    
+         
+     
+      <div className="App-container">
+
+        {/* <LinkContainer to="/">
+          <NavItem>Feniks</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/register-client">
+          <NavItem>New Client</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/client-list">
+          <NavItem>Clients</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/equality">
+          <NavItem>Equality</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/assessment-form">
+          <NavItem>Assement Form</NavItem>
+        </LinkContainer> */}
+
+        
 
 
-  );
-}
+
+  
+
+        {this.state.isAuthenticated
+          ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
+          : <Fragment>
+
+            <LinkContainer to="/signup">
+              <NavItem>Signup</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/login">
+              <NavItem>Login</NavItem>
+            </LinkContainer>
+          </Fragment>
+        }
+
+        <Routes childProps={childProps} />
+
+      </div>
+
+      
+
+      
+
+
+
+
+
+    );
+  }
 }
 export default withRouter(App);

@@ -1,3 +1,8 @@
-/* .navbar {
-    background-color: black;
-} */
+.navbar {
+    display: block;
+    background-color: #333;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 20px;
+}
