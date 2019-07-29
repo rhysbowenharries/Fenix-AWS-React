@@ -71,7 +71,7 @@ class App extends Component {
       isAuthenticated: this.state.isAuthenticated,
       userHasAuthenticated: this.userHasAuthenticated
     }
-    console.log(childProps);
+    
 
     return (
       !this.state.isAuthenticating &&
