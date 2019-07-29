@@ -14,8 +14,10 @@ class EditClientContainer extends Component{
   }
 
   componentDidMount(){
+
     let request = new Request();
-    request.get(`${url}${this.props.id}`).then((data) => {
+    const clientId = this.props.match.params.id;
+    request.get(`${url}` + clientId).then((data) => {
       this.setState({client: data});
     });
 
