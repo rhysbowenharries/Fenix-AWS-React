@@ -14,8 +14,10 @@ class EditClientContainer extends Component{
   }
 
   componentDidMount(){
+
     let request = new Request();
-    request.get(`${url}${this.props.id}`).then((data) => {
+    const clientId = this.props.match.params.id;
+    request.get(`${url}` + clientId).then((data) => {
       this.setState({client: data});
     });
 
@@ -30,6 +32,7 @@ class EditClientContainer extends Component{
 
   handleClientPut(client){
     const request = new Request();
+    debugger
     const urlput = "https://ibog5q1ds7.execute-api.eu-west-1.amazonaws.com/Production/clients/" + this.props.id;
     request.patch(urlput, client).then(() => window.location = "/client-list")
   }

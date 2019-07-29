@@ -1,4 +1,7 @@
+
 class Request {
+
+  constructor(){}
 
   get(url) {
     return fetch(url)
