@@ -1,13 +1,13 @@
 import React, { Component, Fragment} from 'react';
-import {BrowserRouter as Router,Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom';
 import Routes from "./Routes";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { Nav, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import 'bootstrap';
 import './css/feniks_style.css';
 import 'popper.js/dist/popper.js';
-import Login from "./containers/Login";
-
+import Login from "./containers/loginContainers/Login";
+import { Auth } from "aws-amplify";
 
 
 // import { Nav, Navbar,} from "react-bootstrap";
@@ -15,7 +15,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-// import Navbar from './components/navbar/Navbar.js'
+import Navbar from './components/navbar/Navbar.js'
 
 // Containers
 import Home from './containers/Home.js';
@@ -34,31 +34,56 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isAuthenticated: false
+      isAuthenticated: false,
+      isAuthenticating: true
     };
+  }
+
+  async componentDidMount() {
+    try {
+      await Auth.currentSession();
+      this.userHasAuthenticated(true);
+    }
+    catch(e) {
+      if (e !== 'No current user') {
+        alert(e);
+      }
+    }
+
+    this.setState({ isAuthenticating: false });
   }
 
   userHasAuthenticated = authenticated => {
     this.setState({ isAuthenticated: authenticated });
   }
 
+  handleLogout = async event => {
+    await Auth.signOut();
+
+    this.userHasAuthenticated(false);
+    this.props.history.push("/login");
+
+  }
+
+
   render() {
     const childProps = {
       isAuthenticated: this.state.isAuthenticated,
       userHasAuthenticated: this.userHasAuthenticated
-    };
+    }
+    
 
     return (
+      !this.state.isAuthenticating &&
+    <div className="App container">
 
 
 
-        <Router>
 
-          <Fragment>
 
             <Navbar/>
 
-          <div className="head">
+
 
           {this.state.isAuthenticated
             ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
@@ -72,29 +97,17 @@ class App extends Component {
                 <LinkContainer to="/login">
                   <NavItem>Login</NavItem>
                 </LinkContainer>
-                <LinkContainer to="/equality">
-                  <NavItem>Equalities</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/client-list">
-                  <NavItem>Clients</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/assessment-form">
-                  <NavItem>Assessment form</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/register-client">
-                  <NavItem>New Client</NavItem>
-                </LinkContainer>
+
+
               </Fragment>
           }
 
             <Routes childProps={childProps}/>
           </div>
 
-        </Fragment>
-      </Router>
+
 
   );
 }
 }
-
-export default App;
+export default withRouter(App);
