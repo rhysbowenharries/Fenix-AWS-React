@@ -389,6 +389,7 @@ changeOnSubmitToEdit(){
   const formTitle = document.getElementsByClassName('form-title')
   submitButton[0].onSubmit = this.handleSubmitUpdate
   submitButtonText[0].value= "Update Client"
+  console.log(formTitle);
   formTitle[0].innerText = "Update Client Details"
 }
 
@@ -413,9 +414,10 @@ componentDidMount(){
     return(
       <Fragment>
         <form name="submit" className = "form-body" onSubmit={this.handleSubmit}>
+          <h4 className = "form-title">Register New Client</h4>
           <div className="content-block">
             {/* <div className="col-sm-4">
-              <h4 className = "form-title">Registration Form</h4>
+              <
             </div> */}
             <div className="row section-header">
               <h2>Personal Information</h2>
