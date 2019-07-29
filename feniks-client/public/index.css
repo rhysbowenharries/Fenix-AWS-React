@@ -6,3 +6,8 @@ input.form-control {
 input[type=file] {
   width: 100%;
 }
+
+body{
+  font-family: Karla;
+  font-weight: 700;
+}

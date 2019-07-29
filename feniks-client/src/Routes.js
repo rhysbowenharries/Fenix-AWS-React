@@ -1,19 +1,19 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./containers/Home";
-import Login from "./containers/Login";
+import Login from "./containers/loginContainers/Login";
 import Equalities from "./containers/Equalities";
 import ExistingClients from "./containers/ExistingClients";
 import ClientAssessment from "./containers/ClientAssessment";
 import RegisterClient from "./containers/RegisterClient";
 import DetailedClient from "./containers/DetailedClient";
 import EditClient from "./containers/EditClient";
-import AppliedRoute from "./components/AppliedRoute";
 import NotFound from "./containers/NotFound";
-import ResetPassword from "./containers/ResetPassword";
-import Signup from "./containers/Signup";
-import AuthenticatedRoute from "./components/AuthenticatedRoute";
-import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
+import ResetPassword from "./containers/loginContainers/ResetPassword";
+import Signup from "./containers/loginContainers/Signup";
+import AppliedRoute from "./components/loginComponents/AppliedRoute";
+import AuthenticatedRoute from "./components/loginComponents/AuthenticatedRoute";
+import UnauthenticatedRoute from "./components/loginComponents/UnauthenticatedRoute";
 
 
 export default ({ childProps }) =>
@@ -30,7 +30,8 @@ export default ({ childProps }) =>
     <AuthenticatedRoute path="/register-client" component={RegisterClient} props={childProps}/>
     <AuthenticatedRoute path="/client-profile/:id" component={DetailedClient} props={childProps} render = {(props) => {
       const id = props.match.params.id;
-      return <DetailedClient id = {id} />
+      return <DetailedClient id = {id}
+      />
     }}/>
     <AuthenticatedRoute path="/edit/:id" component={EditClient} props={childProps} render = {(props) => {
       const id = props.match.params.id;

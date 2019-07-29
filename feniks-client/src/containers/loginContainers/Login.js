@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {  FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import LoaderButton from "../components/LoaderButton";
+import LoaderButton from "../../components/loginComponents/LoaderButton";
 import "./Login.css";
 import { Auth } from "aws-amplify";
 import { Link } from "react-router-dom";
@@ -18,6 +18,7 @@ export default class Login extends Component {
   }
 
   validateForm() {
+
     return this.state.email.length > 0 && this.state.password.length > 0;
   }
 
@@ -33,6 +34,7 @@ export default class Login extends Component {
     this.setState({ isLoading: true });
 
     try {
+      
       await Auth.signIn(this.state.email, this.state.password);
       this.props.userHasAuthenticated(true);
     } catch (e) {

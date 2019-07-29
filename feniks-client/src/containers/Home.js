@@ -1,12 +1,17 @@
 import React,{Fragment} from 'react';
-import feniks from '../images/feniks_logo-1.jpg'
-import '../containers/Home.css'
+import DateSearch from './DateSearch.js'
+import castle from '../images/home-bg.jpg'
+import AppointmentList from './AppointmentList.js'
+import  './Home.css'
 
 
 // this should be a class if we are going to have a dash board.
 const Home = () =>(
   <Fragment>
-        {/* <img src={feniks} alt="placeholder" id="feniks-logo"/> */}
+      <div className = "padding">
+      <DateSearch/>
+      <AppointmentList/>
+      </div>
   </Fragment>
 )
 

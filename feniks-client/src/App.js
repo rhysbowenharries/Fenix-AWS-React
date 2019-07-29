@@ -7,7 +7,7 @@ import 'bootstrap';
 import './css/feniks_style.css';
 import '../src/App.css'
 import 'popper.js/dist/popper.js';
-import Login from "./containers/Login";
+import Login from "./containers/loginContainers/Login";
 import { Auth } from "aws-amplify";
 
 
@@ -72,14 +72,15 @@ class App extends Component {
     const childProps = {
       isAuthenticated: this.state.isAuthenticated,
       userHasAuthenticated: this.userHasAuthenticated
-    };
+    }
+
 
     return (
       !this.state.isAuthenticating &&
 
-      
-         
-     
+
+
+
       <div className="App-container">
 
         {/* <LinkContainer to="/">
@@ -98,38 +99,34 @@ class App extends Component {
           <NavItem>Assement Form</NavItem>
         </LinkContainer> */}
 
-        
 
 
 
-  
+
+
+
+        {/* {this.state.isAuthenticated
+          ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
+          : <Fragment> */}
 
         {this.state.isAuthenticated
           ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
           : <Fragment>
-
+            <LinkContainer to="/">
+              <NavItem>Home</NavItem>
+            </LinkContainer>
             <LinkContainer to="/signup">
               <NavItem>Signup</NavItem>
             </LinkContainer>
             <LinkContainer to="/login">
               <NavItem>Login</NavItem>
             </LinkContainer>
+            <Routes childProps={childProps} />
           </Fragment>
         }
-
-        <Routes childProps={childProps} />
-
-      </div>
-
-      
-
-      
-
-
-
-
-
-    );
-  }
-}
-export default withRouter(App);
+       </div>
+       
+     );
+   }
+ }
+ export default withRouter(App);
