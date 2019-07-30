@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, withRouter, Link } from 'react-router-dom';
 import Routes from "./Routes";
 import { Nav, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
@@ -10,12 +10,8 @@ import 'popper.js/dist/popper.js';
 import Login from "./containers/loginContainers/Login";
 import { Auth } from "aws-amplify";
 
-
 // import { Nav, Navbar,} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-
 import Navbar from './components/navbar/Navbar.js'
 
 // Containers
@@ -27,9 +23,6 @@ import RegisterClient from './containers/RegisterClient';
 import ClientAssessment from './containers/ClientAssessment';
 import DetailedClient from './containers/DetailedClient';
 import { navBar } from '@aws-amplify/ui';
-
-
-
 
 class App extends Component {
   constructor(props) {
@@ -63,10 +56,9 @@ class App extends Component {
     await Auth.signOut();
 
     this.userHasAuthenticated(false);
-    this.props.history.push("/login");
+    this.props.history.push("/");
 
   }
-
 
   render() {
     const childProps = {
@@ -74,59 +66,26 @@ class App extends Component {
       userHasAuthenticated: this.userHasAuthenticated
     }
 
-
     return (
       !this.state.isAuthenticating &&
 
+      <Fragment>
 
+        <div id="head">
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Sign up</Link>
+        </div>
 
+        <div className="App-container">
+          {this.state.isAuthenticated
+            ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
+            : <Routes childProps={childProps} />
+          }
+        </div>
 
-      <div className="App-container">
+      </Fragment>
+    );
+  }
+}
 
-        {/* <LinkContainer to="/">
-          <NavItem>Feniks</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/register-client">
-          <NavItem>New Client</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/client-list">
-          <NavItem>Clients</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/equality">
-          <NavItem>Equality</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/assessment-form">
-          <NavItem>Assement Form</NavItem>
-        </LinkContainer> */}
-
-
-
-
-
-
-
-        {/* {this.state.isAuthenticated
-          ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
-          : <Fragment> */}
-
-        {this.state.isAuthenticated
-          ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
-          : <Fragment>
-            <LinkContainer to="/">
-              <NavItem>Home</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/signup">
-              <NavItem>Signup</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/login">
-              <NavItem>Login</NavItem>
-            </LinkContainer>
-            <Routes childProps={childProps} />
-          </Fragment>
-        }
-       </div>
-       
-     );
-   }
- }
- export default withRouter(App);
+export default withRouter(App);

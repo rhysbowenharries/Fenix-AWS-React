@@ -1,8 +1,33 @@
 .App-container {
-  display: block;
-  background-color: #333;
+  /* display: block; */
+  background-color: whitesmoke;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  padding: 20px;
+  width: 80%;
+  margin-top: 30px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+#head {
+  background-color: rgb(26, 80, 155);
+  /* display: block; */
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  border-radius: 5px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+#head a {
+  color: white;
   padding: 20px;
 }

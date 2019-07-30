@@ -42,11 +42,13 @@ export default class Login extends Component {
       this.setState({ isLoading: false });
     }
   }
+  
 
 
   render() {
     return (
       <div className="Login">
+        <h2>Login</h2>
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="email" bsSize="large">
             <ControlLabel>Email</ControlLabel>

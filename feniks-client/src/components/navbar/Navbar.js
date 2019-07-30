@@ -10,19 +10,19 @@ const Navbar = (props) => {
     
 
     <nav className="navbar">
-      <Link to="/" className="navbar-brand logo-text">Feniks</Link>
+      <Link to="/">Feniks</Link>
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link to="/register-client" className="nav-link">New Client</Link>
+          <Link to="/register-client">New Client</Link>
         </li>
         <li className="nav-item">
-          <Link to="/client-list" className="nav-link">Clients</Link>
+          <Link to="/client-list">Clients</Link>
         </li>
         <li className= "nav-item">
-          <Link to="/equality" className="nav-link">Equality</Link>
+          <Link to="/equality">Equality</Link>
         </li>
         <li className="nav-item">
-          <Link to="/assessment-form" className="nav-link">Assement Form</Link>
+          <Link to="/assessment-form">Assement Form</Link>
         </li>
       </ul>
     </nav>
