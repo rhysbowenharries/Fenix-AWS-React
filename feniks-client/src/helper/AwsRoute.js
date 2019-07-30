@@ -1,2 +1,2 @@
 
-export const url = "https://ibog5q1ds7.execute-api.eu-west-1.amazonaws.com/Production/clients/";
+export const url = "https://ppaus0q7hl.execute-api.us-east-2.amazonaws.com/prod/notes";
