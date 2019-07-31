@@ -91,15 +91,18 @@ class App extends Component {
 
         <div id="head">
           <Link to="/equality">Equality</Link>
+          <Link to="/register-client">New Client</Link>
           <Link to="/client-list">Client List</Link>
           <Link to="/assessment-form">Assessment Form</Link>
         </div>
 
-        <div className="App-container">
+        <div className="">
           {this.state.isAuthenticated
             ? <Button onClick={this.handleLogout}>Logout</Button>
-            : <Routes childProps={childProps} />
+            : <Link to="/assessment-form">Assessment Form</Link>
           }
+
+            <Routes childProps={childProps} />
         </div>
 
         </Fragment>
