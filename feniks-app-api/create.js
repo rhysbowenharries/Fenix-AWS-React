@@ -3,13 +3,13 @@ import * as dynamoDbLib from "./libs/dynamodb-lib";
 import { success, failure } from "./libs/response-lib";
 
 export async function main(event, context) {
-  const data = JSON.parse(event.body);
+  const data = event.body;
   const params = {
     TableName: "clients",
     Item: {
       id: uuid.v1(),
       address: data.address,
-      projects:data.project,
+      projects:data.projects,
       client: data.client
     }
   };

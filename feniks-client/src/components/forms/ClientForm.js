@@ -271,10 +271,9 @@ class ClientForm extends Component{
     this.setState({projects})
   }
 
-
   handleSubmit(event){
     event.preventDefault();
-    this.props.handleClientPut(this.state);
+    this.props.handleClientPost(this.state);
 }
 
   handleSubmitUpdate(event){
@@ -415,7 +414,9 @@ componentDidMount(){
       <Fragment>
         <form name="submit" className = "form-body" onSubmit={this.handleSubmit}>
           <h4 className = "form-title">Register New Client</h4>
+          <p className = "sub-heading"> Please fill in the client details where required.</p>
           <div className="content-block">
+
             {/* <div className="col-sm-4">
               <
             </div> */}

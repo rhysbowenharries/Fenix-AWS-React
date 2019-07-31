@@ -1,3 +1,40 @@
 {
-    "body": "{\"content\":\"hello world\",\"attachment\":\"hello.jpg\"}"
+  "body": {
+    "address":{
+      "address1":"1",
+      "address2":"1",
+      "address3":"1",
+      "address4":"1"
+    },
+    "projects": {
+      "active50":"true",
+      "counselling":"true",
+      "grouptherapy":"true",
+      "toddler":"true",
+      "survivors":"false",
+      "personaldevelopment":"false",
+      "leithcafe":"false",
+      "smart":"false",
+      "other":"false"
+    },
+    "client": {
+      "title":"Mr",
+      "surname":"Test",
+      "forename":"Test",
+      "dob":"1990-10-01",
+      "gender":"Male",
+      "nationality":"1",
+      "gp":"bob",
+      "address":"1",
+      "phone":"1",
+      "email":"1",
+      "employment":"Employed",
+      "leavemessage":"false",
+      "fromfeniks":"false",
+      "mailing":"false",
+      "projects":"1",
+      "hear":"null",
+      "forreview":"true"
+    }
   }
+}
