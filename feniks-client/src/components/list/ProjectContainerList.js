@@ -7,9 +7,9 @@ const ProjectContainerList = (props) => {
 
       let options = props.projectOptions.map((project, index) => {
           let aSingleClient = props.clients.map((client) => {
-            console.log(client.surname);
-            console.log(client.forename)
-            console.log(client.projects);
+            console.log("client surname",client.surname);
+            console.log("client forename",client.forename)
+            console.log("client projects",client.projects);
             return client
           })
       return <ProjectContainer projectOptions={project} key={index}  singleClient = {aSingleClient} />
@@ -20,3 +20,4 @@ const ProjectContainerList = (props) => {
 
 
 export default ProjectContainerList
+ 
