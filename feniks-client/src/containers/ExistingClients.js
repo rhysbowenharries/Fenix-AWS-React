@@ -59,7 +59,7 @@ class ExistingClients extends Component {
     render(){
       return(
         <Fragment>
-          <ProjectContainerList projectOptions = {Object.keys(this.state.projects)}/>
+          <ProjectContainerList projectOptions = {Object.keys(this.state.projects)} clients = {this.state.clients}/>
         </Fragment>
       )
     }
