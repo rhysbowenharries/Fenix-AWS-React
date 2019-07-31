@@ -28,9 +28,7 @@ class ExistingClients extends Component {
         "other":0,
       }}
 
-
-
-
+      this.handleSelectOption = this.handleSelectOption.bind(this)
     }
 
 
@@ -40,6 +38,19 @@ class ExistingClients extends Component {
       request.get(`${url}`).then((data) => {
         this.setState({clients: data});
         this.setState({filteredClients:data});
+      })
+      this.handleSelectOption()
+    }
+
+
+    handleSelectOption(){
+      let projectArray = Object.keys(this.state.projects);
+      const select = document.getElementById('project-select')
+      projectArray.forEach( project => {
+          let option = document.createElement("option");
+          option.setAttribute('name', project)
+          option.setAttribute('value', project)
+          select.appendChild(option)
       })
     }
     //
@@ -59,6 +70,9 @@ class ExistingClients extends Component {
     render(){
       return(
         <Fragment>
+          <select id = 'project-select'>
+            <option>Select project</option>
+          </select>
           <ProjectContainerList projectOptions = {Object.keys(this.state.projects)} clients = {this.state.clients}/>
         </Fragment>
       )
