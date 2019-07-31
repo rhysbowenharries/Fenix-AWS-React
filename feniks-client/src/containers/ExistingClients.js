@@ -1,5 +1,5 @@
 import React,{Fragment, Component} from 'react';
-
+import { API } from "aws-amplify";
 // import {Link} from 'react-router-dom';
 import {url} from '../helper/AwsRoute.js';
 import Request from '../helper/Request.js';
@@ -18,12 +18,15 @@ class ExistingClients extends Component {
         }
 
         componentDidMount(){
-            let request = new Request();
-            request.get(`${url}`).then((data) => {
-                this.setState({clients: data});
-                this.setState({filteredClients:data});
-            });
-        }
+            API.get("clients", "/clients")
+                .then((data) => {
+                    console.log(data);
+                    this.setState({clients: data});
+                    this.setState({filteredClients:data});
+                }
+                )
+            }
+        
 
         handleSearch(search){
             const filteredClients = this.state.clients.filter((client) => {
@@ -72,7 +75,7 @@ class ExistingClients extends Component {
                         <div className="column-head">Unassigned Clients</div>
                         <div className="column-body">
 
-                            {
+                            {  
                                 this.state.filteredClients.map((client) =>{
                                     return (<ClientList key={client.id} client={client} handleClientPost={this.handleClientPost} />);
                                 })

@@ -13,8 +13,6 @@ class RegisterClient extends Component {
 
 
     handleClientPost(client){
-
-        debugger
         const request = new Request()
         request.post(url, client)
           .then(() => window.location.pathname = "/equality")
