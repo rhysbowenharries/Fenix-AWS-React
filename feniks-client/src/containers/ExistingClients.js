@@ -17,15 +17,15 @@ class ExistingClients extends Component {
     this.state = {clients: [],
       filteredClients: [],
       projects:{
-        "active50":0,
-        "counselling":0,
-        "grouptherapy":0,
-        "toddler":0,
-        "survivors":0,
-        "personaldevelopment":0,
-        "leithcafe":0,
-        "smart":0,
-        "other":0,
+        "Active50":0,
+        "Counselling":0,
+        "Group_therapy":0,
+        "Toddler":0,
+        "Survivors":0,
+        "Personal_development":0,
+        "Leith_Cafe":0,
+        "Smart":0,
+        "Other":0,
       }}
 
 
