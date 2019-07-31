@@ -79,6 +79,8 @@ export default class Login extends Component {
             loadingText="Logging in…"
           />
 
+          <Link to="/">Back</Link>
+
         </form>
       </div>
     );

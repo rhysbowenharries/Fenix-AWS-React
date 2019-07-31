@@ -3,6 +3,7 @@ import {  HelpBlock, FormGroup, FormControl, ControlLabel } from "react-bootstra
 import LoaderButton from "../../components/loginComponents/LoaderButton";
 import { Auth } from "aws-amplify";
 import "./Signup.css";
+import { Link } from "react-router-dom";
 
 export default class Signup extends Component {
   constructor(props) {
@@ -148,6 +149,7 @@ export default class Signup extends Component {
         {this.state.newUser === null
           ? this.renderForm()
           : this.renderConfirmationForm()}
+          <Link to="/">Back</Link>
       </div>
     );
   }
