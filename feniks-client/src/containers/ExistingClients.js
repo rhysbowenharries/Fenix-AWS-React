@@ -1,88 +1,122 @@
 import React,{Fragment, Component} from 'react';
+import ProjectContainerList from '../components/list/ProjectContainerList.js'
+
 
 // import {Link} from 'react-router-dom';
 import {url} from '../helper/AwsRoute.js';
 import Request from '../helper/Request.js';
 import ClientList from '../components/list/ClientList.js';
 import ClientSearchForm from '../components/search/ClientSearchForm.js';
+import ProjectContainer from '../components/list/ProjectContainer.js'
 
 
 class ExistingClients extends Component {
 
-    constructor(props){
-        super(props);
-        this.state = {clients: [],
-            filteredClients: [] }
+  constructor(props){
+    super(props);
+    this.state = {clients: [],
+      filteredClients: [],
+      projects:{
+        "active50":0,
+        "counselling":0,
+        "grouptherapy":0,
+        "toddler":0,
+        "survivors":0,
+        "personaldevelopment":0,
+        "leithcafe":0,
+        "smart":0,
+        "other":0,
+      }}
 
-            this.handleSearch = this.handleSearch.bind(this);
-        }
 
-        componentDidMount(){
-            let request = new Request();
-            request.get(`${url}`).then((data) => {
-                this.setState({clients: data});
-                this.setState({filteredClients:data});
-            });
-        }
 
-        handleSearch(search){
-            const filteredClients = this.state.clients.filter((client) => {
-                return client.surname.includes(search)
-            })
-            this.setState({filteredClients:filteredClients})
-        }
 
-        handleClientPost(client){
-            const request = new Request();
-            request.post(`${url}`, client).then(() => window.location = "/equality-form")
-        }
-
-        render(){
-            return(
-
-                <Fragment>
-
-                {/* this could be refactored to remove the div */}
-                <div className="content-block">
-                    <ClientSearchForm handleSearch = {this.handleSearch}/>
-                </div>
-
-                <div className="row">
-                    <div className="col-sm-3">
-                        <div className="column-head">Priority Clients</div>
-                        <div className="column-body">
-                        </div>
-                    </div>
-
-                    <div className="col-sm-3">
-                        <div className="column-head">FastTrack Clients</div>
-                        <div className="column-body">
-
-                        </div>
-                    </div>
-
-                    <div className="col-sm-3">
-                        <div className="column-head">Standard Clients</div>
-                        <div className="column-body">
-
-                        </div>
-                    </div>
-
-                    <div className="col-sm-3">
-                        <div className="column-head">Unassigned Clients</div>
-                        <div className="column-body">
-
-                            {
-                                this.state.filteredClients.map((client) =>{
-                                    return (<ClientList key={client.id} client={client} handleClientPost={this.handleClientPost} />);
-                                })
-                            }
-                        </div>
-                    </div>
-                </div>
-
-            </Fragment>
-        )};
     }
 
-    export default ExistingClients;
+
+
+    componentDidMount(){
+      let request = new Request();
+      request.get(`${url}`).then((data) => {
+        this.setState({clients: data});
+        this.setState({filteredClients:data});
+      })
+    }
+    //
+    // handleSearch(search){
+    //     const filteredClients = this.state.clients.filter((client) => {
+    //         return client.surname.includes(search)
+    //     })
+    //     this.setState({filteredClients:filteredClients})
+    // }
+    //
+    // handleClientPost(client){
+    //     const request = new Request();
+    //     request.post(`${url}`, client).then(() => window.location = "/equality-form")
+    // }
+
+
+    render(){
+      return(
+        <Fragment>
+          <ProjectContainerList projectOptions = {Object.keys(this.state.projects)}/>
+        </Fragment>
+      )
+    }
+
+
+
+
+
+    //     <Fragment>
+    //
+    //     {/* this could be refactored to remove the div */}
+    //     {/* <div className="content-block">
+    //         <ClientSearchForm handleSearch = {this.handleSearch}/>
+    //     </div> */}
+    //
+    //
+    //     <div className="row">
+    //       {/*  <div className="col-sm-3">
+    //             <div className="column-head">Priority Clients</div>
+    //             <div className="column-body">
+    //             </div>
+    //         </div>
+    //
+    //         <div className="col-sm-3">
+    //             <div className="column-head">FastTrack Clients</div>
+    //             <div className="column-body">
+    //
+    //             </div>
+    //         </div>
+    //
+    //         <div className="col-sm-3">
+    //             <div className="column-head">Standard Clients</div>
+    //             <div className="column-body">
+    //
+    //             </div>
+    //         </div>
+    //
+    //         <div className="col-sm-3">
+    //             <div className="column-head">Unassigned Clients</div>
+    //             <div className="column-body"> */}
+    //
+    //
+    //
+    //
+    //
+    //                 {/* {
+    //                     this.state.filteredClients.map((client) =>{
+    //                         return (<ClientList key={client.id} client={client} handleClientPost={this.handleClientPost} />);
+    //                     })
+    //                 } */}
+    //             </div>
+    //
+    //
+    //
+    // </Fragment>
+
+
+  }
+
+  export default ExistingClients;

@@ -71,7 +71,7 @@ class App extends Component {
       isAuthenticated: this.state.isAuthenticated,
       userHasAuthenticated: this.userHasAuthenticated
     }
-    
+
 
     return (
       !this.state.isAuthenticating &&
@@ -88,9 +88,9 @@ class App extends Component {
           {this.state.isAuthenticated
             ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
             : <Fragment>
-              <LinkContainer to="/">
+              {/* <LinkContainer to="/">
                 <NavItem>Home</NavItem>
-              </LinkContainer>
+              </LinkContainer> */}
                 <LinkContainer to="/signup">
                   <NavItem>Signup</NavItem>
                 </LinkContainer>

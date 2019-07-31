@@ -1,0 +1,12 @@
+.project-container{
+  width:100%;
+  background-color: white;
+  margin-bottom: 5%;
+  padding: 3%;
+  text-align: left;
+  border: 1px solid #d6d6d6;
+  -webkit-box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+  -moz-box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+  box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
+
+}
