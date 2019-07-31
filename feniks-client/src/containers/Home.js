@@ -1,7 +1,7 @@
 import React,{Fragment} from 'react';
-import DateSearch from './DateSearch.js'
+// import DateSearch from './DateSearch.js'
 import castle from '../images/home-bg.jpg'
-import AppointmentList from './AppointmentList.js'
+// import AppointmentList from './AppointmentList.js'
 import  './Home.css'
 
 
@@ -9,8 +9,7 @@ import  './Home.css'
 const Home = () =>(
   <Fragment>
       <div className = "padding">
-      <DateSearch/>
-      <AppointmentList/>
+        <h1>Dashboard</h1>
       </div>
   </Fragment>
 )

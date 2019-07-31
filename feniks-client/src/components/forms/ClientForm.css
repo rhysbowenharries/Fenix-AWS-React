@@ -59,3 +59,18 @@ input checkbox{
 .button{
   margin-right: 4%;
 }
+
+.form-title{
+  text-align: center;
+  color: #343a40;
+  font-size: 36px;
+  padding: 5% 3%;
+  font-family:Karla;
+  font-style: 700;
+}
+
+.sub-heading{
+  margin-top: -5%;
+  text-align: center;
+  padding-bottom: 5%;
+}
