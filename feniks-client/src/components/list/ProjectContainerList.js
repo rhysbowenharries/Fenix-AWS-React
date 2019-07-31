@@ -5,18 +5,30 @@ import ProjectContainer from './ProjectContainer.js'
 const ProjectContainerList = (props) => {
 
 
-      let options = props.projectOptions.map((project, index) => {
-          let aSingleClient = props.clients.map((client) => {
-            console.log(client.surname);
-            console.log(client.forename)
-            console.log(client.projects);
-            return client
-          })
-      return <ProjectContainer projectOptions={project} key={index}  singleClient = {aSingleClient} />
-    })
+  // let aSingleclient = props.clients.map((client) => {
+  //     for(let key in client.projects){
+  //       if(client.projects[key] === true){
+  //       }
+  //     }
+  // })
 
-    return (<Fragment>{options}</Fragment>)
-  };
+
+  let options = props.projectOptions.map((project, index) => {
+    let cleanClientsWithProject = []
+    let clientsWithProject = props.clients.forEach((client) => {
+        if(client.projects != undefined){
+        for(let key in client.projects){
+          if(client.projects[key] === true && key === project){
+            return cleanClientsWithProject.push(client)
+          }
+        }
+      }
+    })
+    return <ProjectContainer projectOptions={project} key={index}  singleClient = {cleanClientsWithProject} />
+  })
+
+  return (<Fragment>{options}</Fragment>)
+};
 
 
 export default ProjectContainerList
