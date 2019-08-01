@@ -1,33 +1,15 @@
-import React, { Component, Fragment} from 'react';
-import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route, withRouter, Link } from 'react-router-dom';
 import Routes from "./Routes";
-import { Nav, NavItem } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import { Button } from "react-bootstrap";
 import 'bootstrap';
 import './css/feniks_style.css';
+import '../src/App.css'
 import 'popper.js/dist/popper.js';
-import Login from "./containers/loginContainers/Login";
 import { Auth } from "aws-amplify";
-
 
 // import { Nav, Navbar,} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-
-import Navbar from './components/navbar/Navbar.js'
-
-// Containers
-import Home from './containers/Home.js';
-import Equalities from './containers/Equalities';
-import EditClient from './containers/EditClient';
-import ExistingClients from './containers/ExistingClients';
-import RegisterClient from './containers/RegisterClient';
-import ClientAssessment from './containers/ClientAssessment';
-import DetailedClient from './containers/DetailedClient';
-
-
-
 
 class App extends Component {
   constructor(props) {
@@ -44,7 +26,7 @@ class App extends Component {
       await Auth.currentSession();
       this.userHasAuthenticated(true);
     }
-    catch(e) {
+    catch (e) {
       if (e !== 'No current user') {
         alert(e);
       }
@@ -61,10 +43,9 @@ class App extends Component {
     await Auth.signOut();
 
     this.userHasAuthenticated(false);
-    this.props.history.push("/login");
+    this.props.history.push("/");
 
   }
-
 
   render() {
     const childProps = {
@@ -72,42 +53,68 @@ class App extends Component {
       userHasAuthenticated: this.userHasAuthenticated
     }
 
+    if (!this.state.isAuthenticated) {
+      return (
+        <Fragment>
 
-    return (
-      !this.state.isAuthenticating &&
-    <div className="App container">
-
-
-
-
-
-            <Navbar/>
-
-
-
-          {this.state.isAuthenticated
-            ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
-            : <Fragment>
-              {/* <LinkContainer to="/">
-                <NavItem>Home</NavItem>
-              </LinkContainer> */}
-                <LinkContainer to="/signup">
-                  <NavItem>Signup</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/login">
-                  <NavItem>Login</NavItem>
-                </LinkContainer>
-
-
-              </Fragment>
-          }
-
-            <Routes childProps={childProps}/>
+          <div id="topnav">
+            <Link to="/" id="title">feniks</Link>
+            <div className="topnav-right">
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Sign up</Link>
+            </div>
           </div>
 
+          <Routes childProps={childProps} />
 
+        </Fragment>
+      )
+    } else {
+      return (
 
-  );
+        <Fragment>
+
+          <div id="topnav">
+            <Link to="/" id="title">feniks</Link>
+            <div className="topnav-right">
+              <Link to="/register-client">New Client</Link>
+              <Link to="/client-list">Clients</Link>
+              <Link to="/equality">Equality</Link>
+              <Link to="/assessment-form">Assessment Form</Link>
+              <Button id="logout-button" onClick={this.handleLogout}>Logout</Button>
+            </div>
+          </div>
+
+          <Routes childProps={childProps} />
+
+        </Fragment>
+      )
+    }
+
+    // return (
+    //   !this.state.isAuthenticating &&
+
+    //   <Fragment>
+
+    //     <div id="head">
+    //       <Link to="/login">Login</Link>
+    //       <Link to="/signup">Sign up</Link>
+    //     </div>
+
+    //     <div id="head">
+    //       <Link to="/register-client">New Client</Link>
+    //     </div>
+
+    //     <div className="App-container">
+    //       {this.state.isAuthenticated
+    //         ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
+    //         : <Routes childProps={childProps} />
+    //       }
+    //     </div>
+
+    //   </Fragment>
+    // );
+  }
 }
-}
+
 export default withRouter(App);

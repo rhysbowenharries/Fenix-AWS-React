@@ -1,398 +1,229 @@
-import React,{Fragment} from 'react';
+import React,{Fragment, Component} from 'react';
 import {Link} from 'react-router-dom';
 
-const ClientAssessmentForm=(props)=>{
-  function handleSubmit(event){
-    event.preventDefault();
-
-    const assessment = {
-      "thing":event.target.thing.value,
-      "thing2":event.target.thing2.value
+class ClientAssessmentForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      id:props.client.id
     }
-// Assessment form post functionality still missing: handleAssessmentPost not written.
-    props.handleAssessmentPost(assessment);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  return (
-    <Fragment>
-      <div className="content-block">
-        <div className="row">
-          <h4>Client Assessment Form</h4>
-        </div>
-        <div className="row">
-          <div className="col-sm-12 btn-group">
-            <Link to="/details" className="btn btn-lg btn-info">Client Details</Link>
-            <Link to="/edit" className="btn btn-lg btn-info">Edit Client</Link>
-            <Link to="/assess" className="btn btn-lg btn-info disabled">Client Assessment</Link>
-          </div>
-        </div>
-      </div>
+  handleSubmit(event) {
+    event.preventDefault();
 
-      <form onSubmit={handleSubmit}>
-        <div className="content-block">
-          <div className="row">
-            <h4>Basic Information</h4>
-          </div>
-          <div className="row">
-            <ul>
-              <li>Client Code</li>
-              <li>Assessment Date</li>
-              <li>Therapist / Counsellor</li>
-              <li>Pathway</li>
-              <li>DOB</li>
-              <li>Gender</li>
-              <li>Nationality</li>
-              <li>GP</li>
-            </ul>
-          </div>
-        </div>
 
-        <div className="content-block">
-          <div className="row">
-            <h4>Schedule</h4>
-          </div>
-          <div className="form-group row">
-            <div className="col-sm-12">
-              <label>When is the client able to attend sessions? They are usually held at the same time, either weekly or fortnightly.</label>
-            </div>
-            <div className="col-sm-12">
-              <table>
-                <tr>
-                  <th></th>
-                  <th>Monday</th>
-                  <th>Tuesday</th>
-                  <th>Wednesday</th>
-                  <th>Thursday</th>
-                  <th>Friday</th>
-                  <th>Saturday</th>
-                </tr>
-                <tr>
-                  <td>Morning</td>
-                  <td><input type="text" id="monday-morning" name="monday-morning" className="form-control"/></td>
-                  <td><input type="text" id="tuesday-morning" name="tuesday-morning" className="form-control"/></td>
-                  <td><input type="text" id="wednesday-morning" name="wednesday-morning" className="form-control"/></td>
-                  <td><input type="text" id="thursday-morning" name="thursday-morning" className="form-control"/></td>
-                  <td><input type="text" id="friday-morning" name="friday-morning" className="form-control"/></td>
-                  <td><input type="text" id="saturday-morning" name="saturday-morning" className="form-control"/></td>
-                </tr>
-                <tr>
-                  <td>Afternoon</td>
-                  <td><input type="text" id="monday-afternoon" name="monday-afternoon" className="form-control"/></td>
-                  <td><input type="text" id="tuesday-afternoon" name="tuesday-afternoon" className="form-control"/></td>
-                  <td><input type="text" id="wednesday-afternoon" name="wednesday-afternoon" className="form-control"/></td>
-                  <td><input type="text" id="thursday-afternoon" name="thursday-afternoon" className="form-control"/></td>
-                  <td><input type="text" id="friday-afternoon" name="friday-afternoon" className="form-control"/></td>
-                  <td><input type="text" id="saturday-afternoon" name="saturday-afternoon" className="form-control"/></td>
-                </tr>
-                <tr>
-                  <td>Evening</td>
-                  <td><input type="text" id="monday-evening" name="monday-evening" className="form-control"/></td>
-                  <td><input type="text" id="tuesday-evening" name="tuesday-evening" className="form-control"/></td>
-                  <td><input type="text" id="wednesday-evening" name="wednesday-evening" className="form-control"/></td>
-                  <td><input type="text" id="thursday-evening" name="thursday-evening" className="form-control"/></td>
-                  <td><input type="text" id="friday-evening" name="friday-evening" className="form-control"/></td>
-                  <td><input type="text" id="saturday-evening" name="saturday-evening" className="form-control"/></td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
+    this.setState({
+      clientInformation: {
+        "healthText": event.target.healthText.value,
+        "medicationText": event.target.medicationText.value,
+        "alcoholdrugsText": event.target.alcoholdrugsText.value,
+        "selfharmText": event.target.selfharmText.value,
+        "suicideconsText": event.target.suicideconsText.value,
+        "suicidethoughtsText": event.target.suicidethoughtsText.value,
+        "therapyText": event.target.therapyText.value,
+        "othertherapyText": event.target.othertherapyText.value,
+        "socialText": event.target.socialText.value
+      }
+    })
 
-        <div className="content-block">
-          <div className="row">
-            <h4>Sessions</h4>
-          </div>
-          <div className="form-group row">
-            <label htmlFor="practitioner" className="col-sm-2 col-form-label">Seen by Practitioner</label>
-            <div className="col-sm-9">
-              <input type="text" id="practitioner" name="practitioner" className="form-control"  placeholder="Seen by Practitioner" />
+    this.setState({
+      presentingIssues: {
+        "abuseTrauma": event.target.abuseTraumaCheckbox.value,
+        "adaptation": event.target.adaptationCheckbox.value,
+        "alcohol": event.target.alcoholCheckbox.value,
+        "drugs": event.target.drugsCheckbox.value,
+        "gambling": event.target.gamblingCheckbox.value,
+        "otherAddiction": event.target.otherAddictionCheckbox.value,
+        "substanceAbuseHistory": event.target.substanceAbuseHistoryCheckbox.value,
+        "angerAgression": event.target.angerAgressionCheckbox.value,
+        "anxiety": event.target.anxietyCheckbox.value,
+        "bereavement": event.target.bereavementCheckbox.value,
+        "bullying": event.target.bullyingCheckbox.value,
+        "childhoodIssues": event.target.childhoodIssuesCheckbox.value,
+        "cognitiveLearning": event.target.cognitiveLearningCheckbox.value,
+        "emotions": event.target.emotionsCheckbox.value,
+        "depression": event.target.depressionCheckbox.value,
+        "domesticViolence": event.target.domesticViolenceCheckbox.value,
+        "eatingDisorder": event.target.eatingDisorderCheckbox.value,
+        "familyDifficulty": event.target.familyDifficultyCheckbox.value,
+        "genderSexuality": event.target.genderSexualityCheckbox.value,
+        "interpersonalRelationships": event.target.interpersonalRelationshipsCheckbox.value,
+        "isolation": event.target.isolationCheckbox.value,
+        "livingWelfare": event.target.livingWelfareCheckbox.value,
+        "mentalHealth": event.target.mentalHealthCheckbox.value,
+        "moodDisorder": event.target.moodDisorderCheckbox.value,
+        "panicAttack": event.target.panicAttackCheckbox.value,
+        "personalityDisorder": event.target.personalityDisorderCheckbox.value,
+        "phobias": event.target.phobiasCheckbox.value,
+        "psychosis": event.target.psychosisCheckbox.value,
+        "selfEsteem": event.target.selfEsteemCheckbox.value,
+        "selfHarm": event.target.selfHarmCheckbox.value,
+        "sexual": event.target.sexualCheckbox.value,
+        "stress": event.target.stressCheckbox.value,
+        "studies": event.target.studiesCheckbox.value,
+        "suicidalThoughts": event.target.suicidalThoughtsCheckbox.value,
+        "suicidalAttempts": event.target.suicidalAttemptsCheckbox.value,
+        "work": event.target.workCheckbox.value,
+        "other": event.target.otherCheckbox.value,
+        "currentIssue": event.target.currentIssue.value,
+        "counsellingGoal": event.target.counsellinggoalText.value
+      }
+    })
+
+    this.props.handleAssessmentPost()
+
+    // TODO: write handleAssessmentPost
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <div className="form-body">
+              <h1 className="form-title">Assessment Form</h1>
+              <p className="sub-heading">Please fill in the client details required</p>
             </div>
-          </div>
-          <div className="form-group row">
-            <label htmlFor="sessiontype" className="col-sm-2 col-form-label">Session Type</label>
-            <div className="col-sm-9">
-              <input type="text" id="sessiontype" name="sessiontype" className="form-control"  placeholder="Session Type" />
+            <div className="content-block">
+          <div className="row">
+            <div className="col-sm-12 btn-group">
+              <Link to={"/client-profile/" + this.state.id} className="btn btn-lg btn-info">Client Details</Link>
+              <Link to={"/edit/" + this.state.id} className="btn btn-lg btn-info">Edit Client</Link>
+              <Link to={"/assess/" + this.state.id} className="btn btn-lg btn-info disabled">Client Assessment</Link>
             </div>
           </div>
         </div>
 
-        <div className="content-block">
-          <div className="row">
-            <h4>Client Information</h4>
-          </div>
-          <div className="form-group">
+        <form onSubmit={this.handleSubmit}>
+          <div className="content-block">
             <div className="row">
-              <label htmlFor="health-text" className="col-sm-12 col-form-label">Any Significant health problems or disabilities</label>
+              <h4>Basic Information</h4>
             </div>
             <div className="row">
-              <div className="col-sm-12">
-                <textarea id="health-text" name="health-text" className="form-control" rows="7" />
-              </div>
+              <ul>
+                <li>Client Code</li>
+                <li>Assessment Date</li>
+                <li>Therapist / Counsellor</li>
+                <li>Pathway</li>
+                <li>DOB</li>
+                <li>Gender</li>
+                <li>Nationality</li>
+                <li>GP</li>
+              </ul>
             </div>
-          </div>
-          <div className="form-group">
-            <div className="row">
-              <label htmlFor="medication-text" className="col-sm-12 col-form-label">Current relevant medication (What medication, dose if known, why they were prescribed and when)</label>
-            </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="medication-text" name="medication-text" className="form-control" rows="7" />
-              </div>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="row">
-              <label htmlFor="alcoholdrugs-text" className="col-sm-12 col-form-label">Alcohol / Recreational drugs - past/present</label>
-            </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="alcoholdrugs-text" name="alcoholdrugs-text" className="form-control" rows="7" />
-              </div>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="row">
-              <label htmlFor="selfharm-text" className="col-sm-12 col-form-label">Has the client ever physically harmed themselves in any way</label>
-            </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="selfharm-text" name="selfharm-text" className="form-control" rows="7" />
-              </div>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="row">
-              <label htmlFor="suicidecons-text" className="col-sm-12 col-form-label">Has the client ever considered taking their own life</label>
-            </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="suicidecons-text" name="suicidecons-text" className="form-control" rows="7" />
-              </div>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="row">
-              <label htmlFor="suicidethoughts-text" className="col-sm-12 col-form-label">Does the client have suicidal thoughts as of now</label>
-            </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="suicidethoughts-text" name="suicidethoughts-text" className="form-control" rows="7" />
-              </div>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="row">
-              <label htmlFor="therapy-text" className="col-sm-12 col-form-label">Has the client had therapy / counselling in the past</label>
-            </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="therapy-text" name="therapy-text" className="form-control" rows="7" />
-              </div>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="row">
-              <label htmlFor="othertherapy-text" className="col-sm-12 col-form-label">Is the client receiving any other form of therapy / seeing any other healthcare professional at present</label>
-            </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="othertherapy-text" name="othertherapy-text" className="form-control" rows="7" />
-              </div>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="row">
-              <label htmlFor="social-text" className="col-sm-12 col-form-label">Social situation (occupation, potential financial and social issues, living arrangements, family and friends, environmental issues, emotional support, etc)</label>
-            </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="social-text" name="social-text" className="form-control" rows="7" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="content-block">
-          <div className="row">
-            <h4>Presenting Issues</h4>
-          </div>
-          <div className="form-group form-check form-check-inline">
-            <input type="checkbox" id="1" name="1" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="1">Abuse / Trauma</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Adaptation Problems</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Addiction: Alcohol</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Addiction: Drugs</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Addiction: Gambling</label>
-          </div>
-          <br/>
-          <div className="form-group form-check form-check-inline">
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Addiction: Other</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Alcohol / substance abuse in family of origin</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Anger and Aggression</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Anxiety</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Bereavement/Loss</label>
-          </div>
-          <br/>
-          <div className="form-group form-check form-check-inline">
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Bullying / Mobbing</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Childhood Issues</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Cognitive / Learning</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Dealing with Emotions</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Depression</label>
-          </div>
-          <br/>
-          <div className="form-group form-check form-check-inline">
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Domestic Violence</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Eating Disorder</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Family Difficulties</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Gender / Sexuality</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Interpersonal / Relationships</label>
-          </div>
-          <br/>
-          <div className="form-group form-check form-check-inline">
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Isolation</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Living / Welfare</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Mental Health Diagnosis</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Mood Disorders</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Panic Attacks</label>
-          </div>
-          <br/>
-          <div className="form-group form-check form-check-inline">
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Personality Disorders</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Phobias</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Psychosis</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Self-Esteem</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Self-Harming</label>
-          </div>
-          <br/>
-          <div className="form-group form-check form-check-inline">
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Sexual</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Stress</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Studies</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Suicidal Thoughts / Feelings</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Suicidal Attempts</label>
-          </div>
-          <br/>
-          <div className="form-group form-check form-check-inline">
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Work</label>
-            <input type="checkbox" id="" name="" className="form-check-input"/>
-            <label className="form-check-label" htmlFor="">Other</label>
           </div>
 
-          <div className="form-group">
+          <div className="content-block">
             <div className="row">
-              <label htmlFor="currentissue" className="col-sm-2 col-form-label">Main Current Issue</label>
-              <div className="col-sm-9">
-                <input type="text" id="currentissue" name="currentissue" className="form-control"  placeholder="Main Current Issue" />
-              </div>
+              <h4>Presenting Issues</h4>
             </div>
-            <div className="row">
-              <label htmlFor="counsellinggoal-text" className="col-sm-12 col-form-label">What would the client like from therapy / counselling</label>
+            <div className="form-group form-check form-check-inline">
+              <input type="checkbox" id="abuseTraumaCheckbox" name="abuseTraumaCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="abuseTraumaCheckbox">Abuse / Trauma</label>
+              <input type="checkbox" id="adaptationCheckbox" name="adaptationCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="adaptationCheckbox">Adaptation Problems</label>
+              <input type="checkbox" id="alcoholCheckbox" name="alcoholCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="alcoholCheckbox">Addiction: Alcohol</label>
+              <input type="checkbox" id="drugsCheckbox" name="drugsCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="drugsCheckbox">Addiction: Drugs</label>
+              <input type="checkbox" id="gamblingCheckbox" name="gamblingCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="gamblingCheckbox">Addiction: Gambling</label>
             </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="counsellinggoal-text" name="counsellinggoal-text" className="form-control" rows="7" />
-              </div>
+            <br />
+            <div className="form-group form-check form-check-inline">
+              <input type="checkbox" id="otherAddictionCheckbox" name="otherAddictionCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="otherAddictionCheckbox">Addiction: Other</label>
+              <input type="checkbox" id="substanceAbuseHistoryCheckbox" name="substanceAbuseHistoryCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="substanceAbuseHistoryCheckbox">Alcohol / substance abuse in family of origin</label>
+              <input type="checkbox" id="angerAgressionCheckbox" name="angerAgressionCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="angerAgressionCheckbox">Anger and Aggression</label>
+              <input type="checkbox" id="anxietyCheckbox" name="anxietyCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="anxietyCheckbox">Anxiety</label>
+              <input type="checkbox" id="bereavementCheckbox" name="bereavementCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="bereavementCheckbox">Bereavement/Loss</label>
             </div>
-          </div>
-        </div>
-
-        <div className="content-block">
-          <div className="row">
-            <h4>Information for Allocation</h4>
-          </div>
-          <div className="form-group">
-            <div className="row">
-              <label htmlFor="thoughts-text" className="col-sm-12 col-form-label">Assessment therapists / counsellors thoughts and feelings during and after session</label>
+            <br />
+            <div className="form-group form-check form-check-inline">
+              <input type="checkbox" id="bullyingCheckbox" name="bullyingCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="bullyingCheckbox">Bullying / Mobbing</label>
+              <input type="checkbox" id="childhoodIssuesCheckbox" name="childhoodIssuesCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="childhoodIssuesCheckbox">Childhood Issues</label>
+              <input type="checkbox" id="cognitiveLearningCheckbox" name="cognitiveLearningCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="cognitiveLearningCheckbox">Cognitive / Learning</label>
+              <input type="checkbox" id="emotionsCheckbox" name="emotionsCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="emotionsCheckbox">Dealing with Emotions</label>
+              <input type="checkbox" id="depressionCheckbox" name="depressionCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="depressionCheckbox">Depression</label>
             </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="thoughts-text" name="thoughts-text" className="form-control" rows="7" />
-              </div>
+            <br />
+            <div className="form-group form-check form-check-inline">
+              <input type="checkbox" id="domesticViolenceCheckbox" name="domesticViolenceCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="domesticViolenceCheckbox">Domestic Violence</label>
+              <input type="checkbox" id="eatingDisorderCheckbox" name="eatingDisorderCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="eatingDisorderCheckbox">Eating Disorder</label>
+              <input type="checkbox" id="familyDifficultyCheckbox" name="familyDifficultyCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="familyDifficultyCheckbox">Family Difficulties</label>
+              <input type="checkbox" id="genderSexualityCheckbox" name="genderSexualityCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="genderSexualityCheckbox">Gender / Sexuality</label>
+              <input type="checkbox" id="interpersonalRelationshipsCheckbox" name="interpersonalRelationshipsCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="interpersonalRelationshipsCheckbox">Interpersonal / Relationships</label>
             </div>
-            <div className="row">
-              <label htmlFor="appropriate-text" className="col-sm-12 col-form-label">Appropriate for therapy / counselling?</label>
+            <br />
+            <div className="form-group form-check form-check-inline">
+              <input type="checkbox" id="isolationCheckbox" name="isolationCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="isolationCheckbox">Isolation</label>
+              <input type="checkbox" id="livingWelfareCheckbox" name="livingWelfareCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="livingWelfareCheckbox">Living / Welfare</label>
+              <input type="checkbox" id="mentalHealthCheckbox" name="mentalHealthCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="mentalHealthCheckbox">Mental Health Diagnosis</label>
+              <input type="checkbox" id="moodDisorderCheckbox" name="moodDisorderCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="moodDisorderCheckbox">Mood Disorders</label>
+              <input type="checkbox" id="panicAttackCheckbox" name="panicAttackCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="panicAttackCheckbox">Panic Attacks</label>
             </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="appropriate-text" name="appropriate-text" className="form-control" rows="7" />
-              </div>
+            <br />
+            <div className="form-group form-check form-check-inline">
+              <input type="checkbox" id="personalityDisorderCheckbox" name="personalityDisorderCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="personalityDisorderCheckbox">Personality Disorders</label>
+              <input type="checkbox" id="phobiasCheckbox" name="phobiasCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="phobiasCheckbox">Phobias</label>
+              <input type="checkbox" id="psychosisCheckbox" name="psychosisCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="psychosisCheckbox">Psychosis</label>
+              <input type="checkbox" id="selfEsteemCheckbox" name="selfEsteemCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="selfEsteemCheckbox">Self-Esteem</label>
+              <input type="checkbox" id="selfHarmCheckbox" name="selfHarmCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="selfHarmCheckbox">Self-Harming</label>
             </div>
-            <div className="row">
-              <label htmlFor="type-text" className="col-sm-12 col-form-label">Type of therapist / counsellor required?</label>
+            <br />
+            <div className="form-group form-check form-check-inline">
+              <input type="checkbox" id="sexualCheckbox" name="sexualCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="sexualCheckbox">Sexual</label>
+              <input type="checkbox" id="stressCheckbox" name="stressCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="stressCheckbox">Stress</label>
+              <input type="checkbox" id="studiesCheckbox" name="studiesCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="studiesCheckbox">Studies</label>
+              <input type="checkbox" id="suicidalThoughtsCheckbox" name="suicidalThoughtsCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="suicidalThoughtsCheckbox">Suicidal Thoughts / Feelings</label>
+              <input type="checkbox" id="suicidalAttemptsCheckbox" name="suicidalAttemptsCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="suicidalAttemptsCheckbox">Suicidal Attempts</label>
             </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="type-text" name="type-text" className="form-control" rows="7" />
-              </div>
+            <br />
+            <div className="form-group form-check form-check-inline">
+              <input type="checkbox" id="workCheckbox" name="workCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="workCheckbox">Work</label>
+              <input type="checkbox" id="otherCheckbox" name="otherCheckbox" className="form-check-input" />
+              <label className="form-check-label" htmlFor="otherCheckbox">Other</label>
             </div>
-            <div className="row">
-              <label htmlFor="referrals-text" className="col-sm-12 col-form-label">Referrals to other projects suggested</label>
-            </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="referrals-text" name="referrals-text" className="form-control" rows="7" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="content-block">
-          <div className="row">
-            <h4>Notes</h4>
-          </div>
-          <div className="form-group">
-            <div className="row">
-              <label htmlFor="thoughts-text" className="col-sm-12 col-form-label">All Notes</label>
-            </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <textarea id="thoughts-text" name="thoughts-text" className="form-control" rows="14" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="content-block">
           <div className="form-group">
             <input type="submit" className="btn btn-lg btn-block btn-success" value="Save"/>
           </div>
-        </div>
-      </form>
-    </Fragment>
-  )
+        
+          </div>
+        </form>
+      </Fragment>
+    )
+  }
 }
+
+
 export default ClientAssessmentForm;

@@ -1,0 +1,11 @@
+.navbar {
+    background-color: white;
+}
+
+.navbar-nav {
+    text-align: center;
+}
+
+.navbar-item {
+    display: inline-block;
+}

@@ -23,13 +23,14 @@ const Equalities =(props)=> {
   }
     return (
       <Fragment>
-        <form onSubmit={handleSubmit}>
-          <div className="col-sm-4">
-            <h4>Equalities Form</h4>
+        <form className="form-body" onSubmit={handleSubmit}>
+          <div>
+            <h1 className="form-title">Equalities Form</h1>
+            <p className="sub-heading">Please fill in the client details where required.</p>
           </div>
           <div className="content-block">
-            <div className="row">
-              <h4>Basic Information</h4>
+            <div className="row section-header">
+              <h2>Basic Information</h2>
             </div>
             <div className="row">
               <div className="col-sm-12">
@@ -42,8 +43,8 @@ const Equalities =(props)=> {
             </div>
           </div>
           <div className="content-block">
-            <div className="row">
-              <h4>Personal Information</h4>
+            <div className="row section-header">
+              <h2>Personal Information</h2>
             </div>
             <div className="form-group row">
               <label htmlFor="gender" className="col-sm-12 col-form-label">Gender</label>
@@ -81,8 +82,8 @@ const Equalities =(props)=> {
             </div>
           </div>
           <div className="content-block">
-            <div className="form-group row">
-              <label htmlFor="abroad" className="col-sm-12 col-form-label">Time Abroad?</label>
+          <div className="row section-header">
+              <h2>Time Abroad</h2>
             </div>
             <div className="form-group form-check form-check-inline">
               <input type="radio" id="abroad1" name="abroad" className="form-check-input" value="1"/>
@@ -97,7 +98,7 @@ const Equalities =(props)=> {
               <label className="form-check-label" htmlFor="abroad5">Over 5 Years</label>
             </div>
           </div>
-          <div className="content-block">
+          <div>
             <div className="form-group btn-group" role="group" aria-label="Submission Buttons">
               <input type="submit" className="btn btn-lg btn-block btn-success" value="Submit"/>
               <button type="reset" className="btn btn-lg btn-danger">Reset</button>

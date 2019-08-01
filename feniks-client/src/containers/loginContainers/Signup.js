@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import {  HelpBlock, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import LoaderButton from "../../components/loginComponents/LoaderButton";
 import { Auth } from "aws-amplify";
-
-// import "./Signup.css";
+import "./Signup.css";
+import { Link } from "react-router-dom";
 
 export default class Signup extends Component {
   constructor(props) {
@@ -145,9 +145,11 @@ export default class Signup extends Component {
   render() {
     return (
       <div className="Signup">
+        <h2>Sign up</h2>
         {this.state.newUser === null
           ? this.renderForm()
           : this.renderConfirmationForm()}
+          <Link to="/">Back</Link>
       </div>
     );
   }
