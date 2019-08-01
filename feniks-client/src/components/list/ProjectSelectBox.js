@@ -10,7 +10,10 @@ const ProjectSelectBox = ({projectOptions, handleChange}) => {
 
     return(
         <Fragment>
-        <select id="" defaultValue="default" onChange={handleChange}>
+          <h1 className = "client-list-header">Current clients by project</h1>
+          <p className = "client-list-sub-header">If you would like to view clients for a particular project, please select from the drop-down below.</p>
+        <div className = 'selection-box-container'>
+        <select id="" defaultValue="default" onChange={handleChange} className = 'selection-box'>
           <option disabled value="default">
           Select project
           </option>
@@ -18,11 +21,11 @@ const ProjectSelectBox = ({projectOptions, handleChange}) => {
               all
           </option>
           {projectList}
-        </select> 
+        </select>
+        </div>
         </Fragment>
     )
 
 }
 
 export default ProjectSelectBox
-

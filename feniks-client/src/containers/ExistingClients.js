@@ -10,6 +10,7 @@ import Request from '../helper/Request.js';
 import ClientList from '../components/list/ClientList.js';
 import ClientSearchForm from '../components/search/ClientSearchForm.js';
 import ProjectContainer from '../components/list/ProjectContainer.js'
+import './ExistingClients.css'
 
 
 class ExistingClients extends Component {
@@ -73,11 +74,11 @@ class ExistingClients extends Component {
                 "other",
               ]})
         }else {
-        
+
         this.setState({selectedProjects: [`${event.target.value}`]})
         }
       }
-    
+
 
     //
     // handleSearch(search){
@@ -96,7 +97,7 @@ class ExistingClients extends Component {
     render(){
       return(
         <Fragment>
-            <ProjectSelectBox projectOptions = {this.state.allProjects} handleChange={this.handleSelectOption}/>
+          <ProjectSelectBox projectOptions = {this.state.allProjects} handleChange={this.handleSelectOption} className = 'selection-box'/>
           <ProjectContainerList projectOptions = {this.state.selectedProjects} clients = {this.state.clients}/>
         </Fragment>
       )
