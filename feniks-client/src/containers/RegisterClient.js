@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {url} from '../helper/AwsRoute.js';
 import Request from '../helper/Request.js';
 import ClientForm from '../components/forms/ClientForm.js';
+import {API} from 'aws-amplify';
 
 
 class RegisterClient extends Component {
@@ -14,12 +15,23 @@ class RegisterClient extends Component {
 
     handleClientPost(client){
         console.log(JSON.stringify(client));
-        
-        debugger
-        const request = new Request()
-        request.post(url, client)
-        //   .then(() => window.location.pathname = "/equality")
-          .catch(console.error);
+        const jsonClient = JSON.stringify(client)
+        const changeThisVariable = {
+            body: jsonClient,
+            header:{'Content-Type': 'application/json'}
+        }
+        // debugger
+        // const request = new Request()
+        // request.post(url, client)
+        // //   .then(() => window.location.pathname = "/equality")
+        //   .catch(console.error);
+        API.post("clients", "/clients", changeThisVariable)
+            .then((data) => {
+                console.log(data);
+                this.setState({clients: data});
+                this.setState({filteredClients:data});
+            }
+            )
     }
 
     render(){
