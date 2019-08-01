@@ -14,11 +14,8 @@ const ProjectSelectBox = ({projectOptions, handleChange}) => {
           <p className = "client-list-sub-header">If you would like to view clients for a particular project, please select from the drop-down below.</p>
         <div className = 'selection-box-container'>
         <select id="" defaultValue="default" onChange={handleChange} className = 'selection-box'>
-          <option disabled value="default">
-          Select project
-          </option>
           <option value="all">
-              all
+              All
           </option>
           {projectList}
         </select>
