@@ -18,7 +18,18 @@ class ExistingClients extends Component {
     super(props);
     this.state = {clients: [],
       filteredClients: [],
-      projects:[
+      allProjects:[
+        "active50",
+        "counselling",
+        "grouptherapy",
+        "toddler",
+        "survivors",
+        "personaldevelopment",
+        "leithcafe",
+        "smart",
+        "other",
+      ],
+      selectedProjects:[
         "active50",
         "counselling",
         "grouptherapy",
@@ -49,8 +60,22 @@ class ExistingClients extends Component {
 
     handleSelectOption(event){
         console.log("EVENT",event.target.value);
+        if (event.target.value === "all"){
+            this.setState({selectedProjects:[
+                "active50",
+                "counselling",
+                "grouptherapy",
+                "toddler",
+                "survivors",
+                "personaldevelopment",
+                "leithcafe",
+                "smart",
+                "other",
+              ]})
+        }else {
         
-        this.setState({projects: [`${event.target.value}`]})
+        this.setState({selectedProjects: [`${event.target.value}`]})
+        }
       }
     
 
@@ -71,8 +96,8 @@ class ExistingClients extends Component {
     render(){
       return(
         <Fragment>
-            <ProjectSelectBox projectOptions = {this.state.projects} handleChange={this.handleSelectOption}/>
-          <ProjectContainerList projectOptions = {this.state.projects} clients = {this.state.clients}/>
+            <ProjectSelectBox projectOptions = {this.state.allProjects} handleChange={this.handleSelectOption}/>
+          <ProjectContainerList projectOptions = {this.state.selectedProjects} clients = {this.state.clients}/>
         </Fragment>
       )
     }

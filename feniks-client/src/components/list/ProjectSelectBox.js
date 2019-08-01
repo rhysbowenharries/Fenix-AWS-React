@@ -14,6 +14,9 @@ const ProjectSelectBox = ({projectOptions, handleChange}) => {
           <option disabled value="default">
           Select project
           </option>
+          <option value="all">
+              all
+          </option>
           {projectList}
         </select> 
         </Fragment>
