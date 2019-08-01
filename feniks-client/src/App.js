@@ -1,29 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, withRouter, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, withRouter, Link } from 'react-router-dom';
 import Routes from "./Routes";
-import { Nav, NavItem, Button } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import { Button } from "react-bootstrap";
 import 'bootstrap';
 import './css/feniks_style.css';
 import '../src/App.css'
 import 'popper.js/dist/popper.js';
-import Login from "./containers/loginContainers/Login";
 import { Auth } from "aws-amplify";
 
 // import { Nav, Navbar,} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './components/navbar/Navbar.js'
-
-// Containers
-import Home from './containers/Home.js';
-import Equalities from './containers/Equalities';
-import EditClient from './containers/EditClient';
-import ExistingClients from './containers/ExistingClients';
-import RegisterClient from './containers/RegisterClient';
-import ClientAssessment from './containers/ClientAssessment';
-import DetailedClient from './containers/DetailedClient';
-import { navBar } from '@aws-amplify/ui';
-import AuthenticatedRoute from "./components/loginComponents/AuthenticatedRoute";
 
 class App extends Component {
   constructor(props) {
@@ -66,44 +52,44 @@ class App extends Component {
       isAuthenticated: this.state.isAuthenticated,
       userHasAuthenticated: this.userHasAuthenticated
     }
-    
+
     if (!this.state.isAuthenticated) {
       return (
-      <Fragment>
+        <Fragment>
 
-        <div id="head">
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign up</Link>
-        </div>
+          <div id="topnav">
+            <Link to="/" id="title">feniks</Link>
+            <div className="topnav-right">
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Sign up</Link>
+            </div>
+          </div>
 
-        <div className="App-container">
-          
+          <div className="App-container">
+
             <Routes childProps={childProps} />
-          
-        </div>
 
-      </Fragment>
+          </div>
+
+        </Fragment>
       )
     } else {
       return (
 
         <Fragment>
 
-        <div id="head">
-          <Link to="/equality">Equality</Link>
-          <Link to="/register-client">New Client</Link>
-          <Link to="/client-list">Client List</Link>
-          <Link to="/assessment-form">Assessment Form</Link>
-        </div>
+          <div id="topnav">
+            <Link to="/" id="title">feniks</Link>
+            <div className="topnav-right">
+              <Link to="/equality">Equality</Link>
+              <Link to="/register-client">New Client</Link>
+              <Link to="/client-list">Client List</Link>
+              <Link to="/assessment-form">Assessment Form</Link>
+              <Button id="logout-button" onClick={this.handleLogout}>Logout</Button>
+            </div>
+          </div>
 
-        <div className="">
-          {this.state.isAuthenticated
-            ? <Button onClick={this.handleLogout}>Logout</Button>
-            : <Link to="/assessment-form">Assessment Form</Link>
-          }
-
-            <Routes childProps={childProps} />
-        </div>
+          <Routes childProps={childProps} />
 
         </Fragment>
       )
