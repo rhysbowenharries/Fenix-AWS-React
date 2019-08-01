@@ -65,11 +65,7 @@ class App extends Component {
             </div>
           </div>
 
-          <div className="App-container">
-
             <Routes childProps={childProps} />
-
-          </div>
 
         </Fragment>
       )
