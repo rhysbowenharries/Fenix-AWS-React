@@ -15,17 +15,17 @@ class RegisterClient extends Component {
 
     handleClientPost(client){
         console.log(JSON.stringify(client));
-        const jsonClient = JSON.stringify(client)
-        const changeThisVariable = {
-            body: jsonClient,
-            header:{'Content-Type': 'application/json'}
-        }
+        // const jsonClient = JSON.stringify(client)
+        // const changeThisVariable = {
+        //     body: jsonClient,
+        //     header:{'Content-Type': 'application/json'}
+        // }
         // debugger
         // const request = new Request()
         // request.post(url, client)
         // //   .then(() => window.location.pathname = "/equality")
         //   .catch(console.error);
-        API.post("clients", "/clients", changeThisVariable)
+        API.post("clients", "/clients", {body: client})
             .then((data) => {
                 console.log(data);
                 this.setState({clients: data});

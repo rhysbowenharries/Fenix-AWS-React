@@ -1,37 +1,3 @@
 {
-  "body": {
-    "address":{
-      "address1":"1",
-      "address2":"1",
-      "address3":"1",
-      "address4":"1"
-    },
-    "projects": {
-      "active50":"true",
-      "counselling":"true",
-      "grouptherapy":"true",
-      "toddler":"true",
-      "survivors":"false",
-      "personaldevelopment":"false",
-      "leithcafe":"false",
-      "smart":"false",
-      "other":"false"
-    },
-    "client": {
-      "title":"Mr",
-      "surname":"Burt",
-      "forename":"Testman",
-      "dob":"1990-10-01",
-      "gender":"Male",
-      "nationality":"1",
-      "gp":"bob",
-      "phone":"1",
-      "email":"1",
-      "employment":"Employed",
-      "leavemessage":"false",
-      "fromfeniks":"false",
-      "mailing":"false",
-      "hear":"null"
-    }
-  }
+  "body": "{\"content\":\"hello world\",\"attachment\":\"hello.jpg\"}"
 }
