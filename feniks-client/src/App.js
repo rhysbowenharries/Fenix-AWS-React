@@ -65,7 +65,7 @@ class App extends Component {
             </div>
           </div>
 
-            <Routes childProps={childProps} />
+          <Routes childProps={childProps} />
 
         </Fragment>
       )
@@ -77,9 +77,9 @@ class App extends Component {
           <div id="topnav">
             <Link to="/" id="title">feniks</Link>
             <div className="topnav-right">
-              <Link to="/equality">Equality</Link>
               <Link to="/register-client">New Client</Link>
-              <Link to="/client-list">Client List</Link>
+              <Link to="/client-list">Clients</Link>
+              <Link to="/equality">Equality</Link>
               <Link to="/assessment-form">Assessment Form</Link>
               <Button id="logout-button" onClick={this.handleLogout}>Logout</Button>
             </div>
