@@ -13,9 +13,12 @@ class RegisterClient extends Component {
 
 
     handleClientPost(client){
+        console.log(JSON.stringify(client));
+        
+        debugger
         const request = new Request()
         request.post(url, client)
-          .then(() => window.location.pathname = "/equality")
+        //   .then(() => window.location.pathname = "/equality")
           .catch(console.error);
     }
 

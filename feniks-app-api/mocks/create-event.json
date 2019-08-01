@@ -25,16 +25,13 @@
       "gender":"Male",
       "nationality":"1",
       "gp":"bob",
-      "address":"1",
       "phone":"1",
       "email":"1",
       "employment":"Employed",
       "leavemessage":"false",
       "fromfeniks":"false",
       "mailing":"false",
-      "projects":"1",
-      "hear":"null",
-      "forreview":"true"
+      "hear":"null"
     }
   }
 }

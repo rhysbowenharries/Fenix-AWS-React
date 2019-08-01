@@ -35,16 +35,14 @@ class ClientForm extends Component{
         "gender":'',
         "nationality":'',
         "gp":'',
-        "address":'',
         "phone":'',
         "email":'',
         "employment":'',
         "leavemessage":false,
         "fromfeniks":false,
         "mailing":false,
-        "projects":"",
-        "hear":null,
-        "forreview":''
+        "hear":null
+        // "forreview":''
     }}
   }else{
     this.state = {
@@ -512,26 +510,26 @@ componentDidMount(){
           <div className="form-group row">
             <label htmlFor="address1" className="col-sm-2 col-form-label">Address Line 1:</label>
             <div className="col-sm-9">
-              <input type="text" id="address1" name="address1" className="form-control"  placeholder="House name / number" value = {this.state.client.address.address1} onChange = {this.handleAddress1Change}/>
+              <input type="text" id="address1" name="address1" className="form-control"  placeholder="House name / number" value = {this.state.address.address1} onChange = {this.handleAddress1Change}/>
             </div>
           </div>
 
           <div className="form-group row">
             <label htmlFor="address2" className="col-sm-2 col-form-label">Address Line 2:</label>
             <div className="col-sm-9">
-              <input type="text" id="address2" name="address2" className="form-control"  placeholder="Street"  value = {this.state.client.address.address2} onChange = {this.handleAddress2Change}/>
+              <input type="text" id="address2" name="address2" className="form-control"  placeholder="Street"  value = {this.state.address.address2} onChange = {this.handleAddress2Change}/>
             </div>
           </div>
           <div className="form-group row">
             <label htmlFor="address3" className="col-sm-2 col-form-label">Address Line 3:</label>
             <div className="col-sm-9">
-              <input type="text" id="address3" name="address3" className="form-control" placeholder="Town" value = {this.state.client.address.address3} onChange = {this.handleAddress3Change}/>
+              <input type="text" id="address3" name="address3" className="form-control" placeholder="Town" value = {this.state.address.address3} onChange = {this.handleAddress3Change}/>
             </div>
           </div>
           <div className="form-group row">
             <label htmlFor="address4" className="col-sm-2 col-form-label">Address Line 4:</label>
             <div className="col-sm-9">
-              <input type="text" id="address4" name="address4" className="form-control" placeholder="Postcode"  value = {this.state.client.address.address4} onChange = {this.handleAddress4Change}/>
+              <input type="text" id="address4" name="address4" className="form-control" placeholder="Postcode"  value = {this.state.address.address4} onChange = {this.handleAddress4Change}/>
             </div>
           </div>
           <div className="form-group row">
