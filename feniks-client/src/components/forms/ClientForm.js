@@ -411,7 +411,7 @@ componentDidMount(){
     return(
       <Fragment>
         <form name="submit" className = "form-body" onSubmit={this.handleSubmit}>
-          <h4 className = "form-title">Register New Client</h4>
+          <h1 className = "form-title">Register New Client</h1>
           <p className = "sub-heading"> Please fill in the client details where required.</p>
           <div className="content-block">
 

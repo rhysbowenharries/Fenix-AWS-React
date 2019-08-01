@@ -10,3 +10,8 @@
   box-shadow: -10px 6px 14px -6px rgba(184,184,184,0.69);
 
 }
+
+.project-container h4{
+  font-weight: 700;
+  color: #014ea0;
+}

@@ -63,10 +63,9 @@ input checkbox{
 .form-title{
   text-align: center;
   color: #343a40;
-  font-size: 36px;
   padding: 5% 3%;
   font-family:Karla;
-  font-style: 700;
+  font-weight: 700;
 }
 
 .sub-heading{
