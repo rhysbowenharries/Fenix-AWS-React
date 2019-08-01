@@ -11,8 +11,10 @@ const ClientInfo= (props) => {
       projects = projects + key + " | ";
     }
   }
+  console.log(props);
 
   return (
+    
   <Fragment>
     <div className="content-block">
       <div className="row">
@@ -36,9 +38,9 @@ const ClientInfo= (props) => {
         <p> Date of Birth: {props.client.dob} </p>
         <p>Email: {props.client.email} </p>
         <p>Phone: {props.client.phone} </p>
-        <p>Address: <br></br>{props.client.address.address1} {props.client.address.address2}<br/>
-        {props.client.address.address3}<br/>
-        {props.client.address.address4} </p>
+        <p>Address: <br></br>{props.address.address1} {props.address.address2}<br/>
+        {props.address.address3}<br/>
+        {props.address.address4} </p>
         <p>Gender: {props.client.gender}</p>
         <p>Nationality: {props.client.nationality}</p>
         <p> Employment: {props.client.employment} </p>
