@@ -28,7 +28,7 @@ const ProjectContainerList = (props) => {
       
     })
     if (cleanClientsWithProject[0]){
-    return <ProjectContainer projectOptions={project} key={index}  singleClient = {cleanClientsWithProject} />
+    return <ProjectContainer projectOptions={project} key={index}  projectClients = {cleanClientsWithProject} />
     } else {
       return null
     }
