@@ -213,6 +213,10 @@ class ClientAssessmentForm extends Component {
               <input type="checkbox" id="otherCheckbox" name="otherCheckbox" className="form-check-input" />
               <label className="form-check-label" htmlFor="otherCheckbox">Other</label>
             </div>
+          <div className="form-group">
+            <input type="submit" className="btn btn-lg btn-block btn-success" value="Save"/>
+          </div>
+        
           </div>
         </form>
       </Fragment>
