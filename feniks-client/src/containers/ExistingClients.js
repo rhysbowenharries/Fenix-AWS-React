@@ -1,6 +1,7 @@
 import React,{Fragment, Component} from 'react';
 import { API } from "aws-amplify";
 import ProjectContainerList from '../components/list/ProjectContainerList.js'
+import ProjectSelectBox from '../components/list/ProjectSelectBox.js'
 
 
 // import {Link} from 'react-router-dom';
@@ -17,21 +18,20 @@ class ExistingClients extends Component {
     super(props);
     this.state = {clients: [],
       filteredClients: [],
-      projects:{
-        "Active50":0,
-        "Counselling":0,
-        "Group_therapy":0,
-        "Toddler":0,
-        "Survivors":0,
-        "Personal_development":0,
-        "Leith_Cafe":0,
-        "Smart":0,
-        "Other":0,
-      }}
+      projects:[
+        "active50",
+        "counselling",
+        "grouptherapy",
+        "toddler",
+        "survivors",
+        "personaldevelopment",
+        "leithcafe",
+        "smart",
+        "other",
+      ]
+    }
 
-
-
-
+      this.handleSelectOption = this.handleSelectOption.bind(this)
     }
 
 
@@ -44,7 +44,16 @@ class ExistingClients extends Component {
                 this.setState({filteredClients:data});
             }
             )
-        }
+    }
+
+
+    handleSelectOption(event){
+        console.log("EVENT",event.target.value);
+        
+        this.setState({projects: [`${event.target.value}`]})
+      }
+    
+
     //
     // handleSearch(search){
     //     const filteredClients = this.state.clients.filter((client) => {
@@ -62,7 +71,8 @@ class ExistingClients extends Component {
     render(){
       return(
         <Fragment>
-          <ProjectContainerList projectOptions = {Object.keys(this.state.projects)} clients = {this.state.clients}/>
+            <ProjectSelectBox projectOptions = {this.state.projects} handleChange={this.handleSelectOption}/>
+          <ProjectContainerList projectOptions = {this.state.projects} clients = {this.state.clients}/>
         </Fragment>
       )
     }
