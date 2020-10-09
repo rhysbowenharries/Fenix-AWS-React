@@ -4,7 +4,9 @@ Welcome to my React / Serverless / AWS Health and Support DB app.
 Please:
 
 Open your terminal in root
+
 cd feniks-client
+
 npm install
 
 Authorisation using AWS Auth.
